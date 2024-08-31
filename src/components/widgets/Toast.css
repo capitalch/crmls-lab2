@@ -1,0 +1,24 @@
+.swal2-container {
+	width: 100vw !important;
+	height: 100vh !important;
+	display: flex;
+	justify-content: center;
+}
+
+.swal2-popup {
+	min-height: 4rem;
+	max-width: 30rem;
+	top: 5rem;
+}
+
+.swal2-title {
+	font-size: 16px;
+	margin: 0;
+	color: #6c757d;
+	padding-right: 2rem;
+}
+
+.swal_bigPopup {
+	min-width: 40%;
+	top: 0;
+}

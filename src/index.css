@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .input-registered, .input-registered-required { @apply flex-1 block w-full focus:ring-0 focus:border-divider min-w-0 rounded-sm sm:text-sm border-default bg-secondary text-secondary; }
+    .input-registered-invalid { @apply flex-1 block w-full focus:ring-red-500 focus:border-red-500 min-w-0 rounded-sm sm:text-sm border-red-300 text-red-900 placeholder-red-300 bg-secondary; }
+
+    /** General CSS **/
+    .crmls-link { @apply text-header hover:text-opacity-50; }
+    .basic-link { @apply inline-block text-sm text-header align-baseline hover:text-opacity-80 cursor-pointer; }
+    .basic-form-field { @apply w-full block px-4 py-2 font-normal bg-secondary text-secondary border border-solid rounded shadow-sm transition ease-in-out border-divider focus:border-divider; }
+    .cta-button { @apply py-4 px-16 m-2 text-xl text-white font-medium transition-colors duration-150 bg-nb-yellow rounded-lg hover:bg-opacity-80; }
+
+    /** Tables CSS **/
+    .crmls-table-main-actions { @apply my-1 mb-2 relative flex justify-between px-1 }
+    .crmls-table-main-actions div { @apply flex flex-row-reverse space-x-4}
+    .crmls-table-main-container { @apply py-2 align-middle inline-block min-w-full }
+    .crmls-table-wrapper { @apply shadow overflow-hidden rounded-lg }
+    .crmls-table { @apply min-w-full divide-y divide-default border border-default }
+    .crmls-table thead { @apply bg-header }
+    .crmls-table th { @apply relative p-3 }
+    .crmls-table th span { @apply block text-xs font-medium text-inverse uppercase tracking-wider }
+    .crmls-table td { @apply p-3 text-sm text-primary text-center }
+    .crmls-table td.important { @apply font-medium }
+    .crmls-table td button { @apply whitespace-nowrap }
+    .crmls-table tbody tr:nth-child(even) { @apply bg-secondary }
+    .crmls-table tbody tr:nth-child(odd) { @apply bg-primary }
+
+    /** Form CSS **/
+    .crmls-submit-btn { @apply inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-inverse bg-header hover:bg-opacity-50 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-blue-500 }
+    .crmls-fields-wrap { @apply space-y-6 sm:space-y-5 col-span-12 }
+    .crmls-field-wrap { @apply sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start pt-5 first:border-0 }
+    .crmls-field-wrap label { @apply block text-sm font-medium text-primary sm:mt-px sm:pt-2 }
+    .crmls-field-wrap.compact { @apply pt-0 }
+
+    /** Tabs CSS **/
+    .crmls-tabs {}
+    .crmls-tab-list { @apply flex flex-col sm:flex-row }
+    .crmls-tab { @apply text-header text-opacity-50 py-4 px-6 block focus:outline-none cursor-pointer }
+    .crmls-tab.active { @apply text-header border-b-2 border-divider }
+    .crmls-tab-content { @apply mt-6 sm:mt-5 space-y-6 sm:space-y-5 max-w-full px-2 }
+
+    /** Training Calendar CSS **/
+    .training-calendar .e-subject, .training-calendar .e-time { @apply text-shadow; }
+    .training-calendar .e-agenda-view .e-subject, .training-calendar .e-agenda-view .e-time { @apply text-shadow-none; }
+    .training-calendar .calendar-detail-icon { padding-right: unset !important; color: unset !important; display: unset !important; background-color: unset !important; border: none !important; }
+
+    .custom-input__control { @apply bg-secondary border border-default !important }
+    .custom-input__placeholder { @apply text-secondary !important; }
+    .custom-input__indicator-separator { @apply border border-default !important; }
+    .custom-input__indicator { @apply text-secondary !important; }
+    .custom-input__menu { @apply bg-secondary text-secondary !important; }
+    .custom-input__single-value, .custom-input__value-container { @apply text-secondary !important; }
+
+    /** Syncfusion and browser overrides **/
+    .e-input-group { @apply bg-secondary px-3 py-1 text-primary !important; }
+    .e-input-group span { @apply text-secondary !important; }
+    .dark input[type="date"]::-webkit-calendar-picker-indicator, .contrast input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); } /* This will invert the calendar icon based on theme for date inputs */
+
+    /** Default article styles (if no inline styles are added via the wysiwyg editor when creating an article, these will be defaults for common tags) **/
+    .article-details h1 { @apply mb-4 text-5xl font-extrabold text-header; }
+    .article-details h2 { @apply mb-3 text-4xl font-bold text-header; }
+    .article-details h3 { @apply mb-2 text-3xl font-bold text-header; }
+    .article-details h4 { @apply mb-1 text-2xl font-semibold text-header; }
+    .article-details h5 { @apply text-xl font-semibold text-header; }
+    .article-details h6 { @apply text-lg font-medium text-header; }
+
+    .article-details p { @apply mb-3; }
+    .article-details a { @apply text-tertiary hover:text-opacity-80 hover:underline; }
+    .article-details ul { @apply mb-2 space-y-1 max-w-md list-disc list-inside; }
+    .article-details ol { @apply mb-2 pl-5 mt-2 space-y-1 list-decimal list-inside; }
+
+    /** Password field strength indicator **/
+    .password-strength-meter::before { content: ""; height: 4px; display: block; transition: width 0.2s; }
+    .password-strength-meter[data-color = "gray"] { @apply bg-secondary; }
+    .password-strength-meter[data-color = "red"] { background-color: red; }
+    .password-strength-meter[data-color = "orange"] { background-color: orange; }
+    .password-strength-meter[data-color = "#03a2cc"] { background-color: #03a2cc; }
+    .password-strength-meter[data-color = "#10d652"] { background-color: #10d652; }
+
+    /** Public pages css **/
+    .public-dashboard-wrapper { @apply flex flex-wrap items-center justify-between mt-8 3xl:mt-16; }
+    /* .public-dashboard-wrapper { height: calc(100vh - 90px); } */
+
+    sub, sup { font-size: 50%; }
+}
+
+@layer utilities {
+    @variants responsive {
+        .text-shadow { text-shadow: 1px 1px 2px rgb(0, 0, 0, .25); }
+        .text-shadow-md { text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25); }
+        .text-shadow-lg { text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25); }
+        .text-shadow-none { text-shadow: none; }
+    } 
+}
+
+.fade-anim { animation: fadeAnim 0.3s ease-in-out; }
+@keyframes fadeAnim { from { opacity: 0; } to { opacity: 1; } }
+.react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar { display: none; }
+.react-horizontal-scrolling-menu--scroll-container { -ms-overflow-style: none; /* IE and Edge */ scrollbar-width: none; /* Firefox */ }
+.__react_component_tooltip::before { z-index: -1 !important; }
+
+/* marketplace apps badge css */
+.app-card-marketplace:after, .app-card-aor:after, .app-card-broker:after {
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 25px 25px;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    padding-right: 10px;
+    color: white;
+    opacity: .25;
+}
+.app-card-marketplace:after { content: 'm'; border-color: transparent transparent #a1a1aa transparent; }
+.app-card-aor:after { content: 'a'; border-color: transparent transparent #aadbaa transparent; }
+.app-card-broker:after { content: 'b'; border-color: transparent transparent #da9fb2 transparent; }
+.react-horizontal-scrolling-menu--inner-wrapper{ position: absolute; width: 100%; }
+.box-shadow-lg { box-shadow: -30px 30px var(--bg-header) }
+
+
+/* .menu-group li>ul                 { transform: translatex(100%) scale(0) }
+.menu-group li:hover>ul           { transform: translatex(101%) scale(1) }
+.menu-group li > button svg       { transform: rotate(-90deg) }
+.menu-group li:hover > button svg { transform: rotate(-270deg) }
+.menu-group:hover .menu-group-hover\:scale-100 { transform: scale(1) }
+.menu-group:hover .menu-group-hover\:-rotate-180 { transform: rotate(180deg) }
+.menu-scale-0 { transform: scale(0) }
+.menu-min-w-32 { min-width: 8rem } */
+
+.menu-group li>ul                 { transform: translatex(100%) scale(0) }
+.menu-group li:hover>ul           { transform: translatex(101%) scale(1) }
+/* .menu-group li > button svg       { transform: rotate(-90deg) }
+.menu-group li:hover > button svg { transform: rotate(-270deg) } */
+.menu-group:hover .menu-group-hover\:scale-100 { transform: scale(1) }
+.menu-group:hover .menu-group-hover\:-rotate-180 { transform: rotate(180deg) }
+.menu-scale-0 { transform: scale(0) }
+.menu-min-w-32 { min-width: 8rem }
+
+
+.light {
+    --bg-header: 0 84 154; /* blue for header/button */
+    --bg-primary: 255 255 255; /* white for main content */
+    --bg-secondary: 243 244 246; /* gray for header/sidebar */
+    --bg-tertiary: 229 231 235; /* darker gray for standoff border/sidebar color */
+    --bg-menu: 236 249 255; /* main menu bg */
+    --bg-menucollapse: 0 84 154; /* main menu callapsed color */
+
+    --text-header: 0 84 154; /* blue for header/button */
+    --text-primary: 92 100 117; /* gray to stand out from primary bg */
+    --text-secondary: 107 114 128; /* darker gray to stand out from secondary bg */
+    --text-tertiary: 230 82 57; /* link or standout color */
+    --text-inverse: 255 255 255; /* reverse text on header color */
+    --text-menucollapse: 255 255 255; /* menu collapsed text/icon color */
+
+    --border-divider: 229 231 235; /* link or standout color */
+    --border-default: 243 244 246; /* gray for header/sidebar */
+    --border-dark: 196 202 206; /* dark border (menu border) */
+    --border-header: 0 84 154; /* blue for header/button */
+    --border-menu: 220 239 247; /* menu right border when expanded */
+}
+
+.dark {
+    --bg-header: 2 111 201;
+    --bg-primary: 28 39 51;
+    --bg-secondary: 23 32 42;
+    --bg-tertiary: 24 25 26;
+    --bg-menu: 23 32 42;
+    --bg-menucollapse: 24 25 26;
+
+    --text-header: 2 111 201;
+    --text-primary: 107 114 128;
+    --text-secondary: 92 100 117;
+    --text-tertiary: 230 82 57;
+    --text-inverse: 255 255 255;
+    --text-menucollapse: 92 100 117;
+
+    --border-divider: 24 25 26;
+    --border-default: 23 32 42;
+    --border-dark: 24 25 26;
+    --border-header: 2 111 201;
+    --border-menu: 24 25 26;
+}
+
+.solar {
+    --bg-header: 230 82 57;
+    --bg-primary: 239 230 198;
+    --bg-secondary: 206 193 150;
+    --bg-tertiary: 155 143 102;
+    --bg-menu: 206 193 150;
+    --bg-menucollapse: 155 143 102;
+
+    --text-header: 0 84 154;
+    --text-primary: 155 143 102;
+    --text-secondary: 178 164 117;
+    --text-tertiary: 230 82 57;
+    --text-inverse: 255 255 255;
+    --text-menucollapse: 178 164 117;
+
+    --border-divider: 155 143 102;
+    --border-default: 206 193 150;
+    --border-dark: 155 143 102;
+    --border-header: 0 84 154;
+    --border-menu: 155 143 102;
+}
+
+.contrast {  
+    --bg-header: 26 235 265; 
+    --bg-primary: 0 0 0;
+    --bg-secondary: 20 20 20;
+    --bg-tertiary: 15 14 14;
+    --bg-menu: 20 20 20;
+    --bg-menucollapse: 15 14 14;
+
+    --text-header: 26 235 265;
+    --text-primary: 255 255 255;
+    --text-secondary: 255 255 255;
+    --text-tertiary: 255 255 0;
+    --text-inverse: 0 0 0;
+    --text-menucollapse: 255 255 255;
+
+    --border-divider: 26 235 265;
+    --border-default: 20 20 20;
+    --border-dark: 26 235 265;
+    --border-header: 26 235 265;
+    --border-menu: 15 14 14;
+}
+
+/* Syncfusion GridComponent alternative row color */
+.e-grid .e-altrow {
+    background-color: #fafafa;
+}
