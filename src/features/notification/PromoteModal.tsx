@@ -34,6 +34,7 @@ const PromoteModal = ({id}: {id: string}) => {
                     className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
                     onClick={
                         () => {
+<<<<<<< HEAD
                             dispatch(promoteRegisteredListing(id))
                                 .then(() => dispatch(hide()))
                                 .then(() => dispatch(show({
@@ -47,6 +48,35 @@ const PromoteModal = ({id}: {id: string}) => {
                                         notificationId: null
                                     })
                                 ))
+=======
+                            dispatch(hide());
+                            dispatch(promoteRegisteredListing(id))
+                                .then((response) => {
+                                    if(response.payload) {
+                                        dispatch(show({
+                                            show: true,
+                                            title: 'Registered Listing  has been sent to the MLS',
+                                            message: "We have sent your Registered listing to the MLS. You can find it it in your MLS system where you normally find Incomplete listings. This may vary depending on which MLS system you use.",
+                                            status: 'success',
+                                            position: 'popover',
+                                            autoHide: 8000,
+                                            confirm: false,
+                                            notificationId: null
+                                        }));
+                                    } else {
+                                        dispatch(show({
+                                            show: true,
+                                            title: 'Error!',
+                                            message: "We're sorry, but we were unable to send your listing to the MLS. Please try again later.",
+                                            status: 'error',
+                                            position: 'popover',
+                                            autoHide: 5000,
+                                            confirm: false,
+                                            notificationId: null
+                                        }));
+                                    }  
+                                })
+>>>>>>> dev-1
                         }
                     }
                 >

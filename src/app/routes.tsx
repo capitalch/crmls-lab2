@@ -25,6 +25,7 @@ import PasswordReset from "../pages/public/PasswordReset";
 import LoggedOut from "../pages/public/LoggedOut";
 import { DashboardLoader } from "../components/widgets/SkeletonScreens";
 import ForgotPassword from "../pages/public/ForgotPassword";
+<<<<<<< HEAD
 import { Offices } from "../features/offices/Offices";
 import OfficeIcon from "../components/widgets/icons/OfficeIcon";
 import Aor from "../features/aor/Aor";
@@ -46,6 +47,11 @@ import { Member } from "../features/members/Member";
 import { NewContact } from "../features/contacts/NewContact";
 import { Office } from "../features/offices/Office";
 import { NewMember } from "../features/members/NewMember";
+=======
+import CreateReport from "../features/compliance/CreateReport";
+import { ExclamationCircleIcon } from "@heroicons/react/outline";
+import AdminHome from "../features/admin/AdminHome";
+>>>>>>> dev-1
 
 export type routeObject = {
 	id?: string;
@@ -56,7 +62,11 @@ export type routeObject = {
 	icon?: React.FunctionComponent<any>;
 	// icon: ElementType,
 	target?: "_blank" | null;
+<<<<<<< HEAD
 	menu?: "user" | "main" | "none" | "quicklink" | "static" | "submenu";
+=======
+	menu?: "user" | "main" | "none" | "quicklink" | "static";
+>>>>>>> dev-1
 	color?: string;
 	viewOrder?: number | 0;
 };
@@ -123,6 +133,7 @@ export const authRoutes: routeObject[] = [
 		component: null,
 		icon: SyndicationIcon,
 	},
+<<<<<<< HEAD
 	// {
 	// 	path: "/aor-messages",
 	// 	exact: true,
@@ -147,6 +158,20 @@ export const authRoutes: routeObject[] = [
 	// 	component: RegisteredListing,
 	// 	icon: ChatIcon,
 	// },
+=======
+	{
+		path: "/admin",
+		exact: true,
+		component: AdminHome,
+		icon: ChatIcon,
+	},
+	{
+		path: "/admin/:urlTab?/:id?",
+		exact: true,
+		component: AdminHome,
+		icon: ChatIcon,
+	},
+>>>>>>> dev-1
 	{
 		path: "/profile",
 		exact: true,
@@ -183,6 +208,7 @@ export const authRoutes: routeObject[] = [
 		component: PasswordChange,
 		menu: "static",
 	},
+<<<<<<< HEAD
 	// roster links
 	{
 		path: "/offices",
@@ -358,6 +384,20 @@ export const authRoutes: routeObject[] = [
 		component: () => <Team />,
 		icon: PersonIcon,
 		menu: "submenu",
+=======
+	{
+		path: "/compliance-report",
+		exact: true,
+		component: CreateReport,
+		icon: ExclamationCircleIcon,
+		menu: "static",
+	},
+	{
+		path: "/compliance-report/:listingId",
+		exact: true,
+		component: CreateReport,
+		icon: ExclamationCircleIcon,
+>>>>>>> dev-1
 	},
 ];
 
@@ -409,7 +449,10 @@ export const publicRoutes: routeObject[] = [
 		component: DashboardLoader,
 		menu: "static",
 	},
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev-1
 	// Quick links
 	{
 		title: "Brokers",
@@ -462,9 +505,13 @@ export const publicRoutes: routeObject[] = [
 ];
 
 // Filter out any public routes where paths don't exist in authorized routes - public routes should be accessible after logging in
+<<<<<<< HEAD
 const tempPublicRoutes = publicRoutes.filter(
 	(publicRoute) =>
 		publicRoute.menu !== "quicklink" &&
 		!authRoutes.find((authRoute) => authRoute.path === publicRoute.path)
 );
+=======
+const tempPublicRoutes = publicRoutes.filter((publicRoute) => publicRoute.menu !== "quicklink" && !authRoutes.find((authRoute) => authRoute.path === publicRoute.path));
+>>>>>>> dev-1
 export const tempRoutes: routeObject[] = [...tempPublicRoutes, ...authRoutes];

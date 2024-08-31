@@ -8,6 +8,7 @@ import AorLogo from "../../app/AorLogo";
 import { Transition } from "@headlessui/react";
 import { dynamicMenuType, selectAllDynamicMenus } from "./dynamicMenuSlice";
 import { NavLoader } from "../widgets/SkeletonScreens";
+<<<<<<< HEAD
 import { AdDisplay } from "../../features/ads/AdContainer";
 import { rebuildTooltips } from "../settings/theme/ThemeTooltip";
 import { selectAllAds } from "../../features/ads/adsSlice";
@@ -27,16 +28,33 @@ export const checkSubmenuActive = (path: string, location: any, children?: dynam
 const MainNav = () => {
 	const location = useLocation();
 	const allAds = useSelector(selectAllAds);
+=======
+// import { AdDisplay } from "../../features/ads/AdContainer";
+import { rebuildTooltips } from "../settings/theme/ThemeTooltip";
+// import { selectAllAds } from "../../features/ads/adsSlice";
+import PoweredBy from "../content/PoweredBy";
+
+const MainNav = () => {
+	const location = useLocation();
+	// const allAds = useSelector(selectAllAds);
+>>>>>>> dev-1
 	const dynamicMenu = useSelector(selectAllDynamicMenus);
 	const [mainNav, setMainNav] = useState<dynamicMenuType[]>([]);
 	const [quickLinks, setQuickLinks] = useState<dynamicMenuType[]>([]);
 	const [sidebarOpen, setSidebarOpen] = useState(true);
+<<<<<<< HEAD
 	const [spotlightAd, setSpotlightAd] = useState<any>();
 	const flyout = true;
 
 	useEffect(() => {
 		if (dynamicMenu && dynamicMenu.length > 0) {
 			// console.dir(JSON.stringify(dynamicMenu, null, 5))
+=======
+	// const [spotlightAd, setSpotlightAd] = useState<any>();
+
+	useEffect(() => {
+		if (dynamicMenu && dynamicMenu.length > 0) {
+>>>>>>> dev-1
 			const mainNavRoutes: any[] = [];
 			dynamicMenu
 				.filter((route) => route.menuType === "nav" && route.menu === "main")
@@ -55,6 +73,7 @@ const MainNav = () => {
 		}
 	}, [dynamicMenu]);
 
+<<<<<<< HEAD
 	useEffect(() => {
 		if (allAds.length > 0) {
 			const adsResponse = allAds[0];
@@ -65,19 +84,46 @@ const MainNav = () => {
 			}
 		}
 	}, [allAds]);
+=======
+	// useEffect(() => {
+	// 	if (allAds.length > 0) {
+	// 		const adsResponse = allAds[0];
+	// 		const tmpSpotlightAd = adsResponse.impressions.find((impression: any) => impression.tagName === "spotlight-ad");
+
+	// 		if (adsResponse?.isEnabled && tmpSpotlightAd?.isEnabled) {
+	// 			setSpotlightAd(<AdDisplay type="spotlight-ad" wrapperClass="p-4" isScript={tmpSpotlightAd.isScript} template={tmpSpotlightAd.template} />);
+	// 		}
+	// 	}
+	// }, [allAds]);
+>>>>>>> dev-1
 
 	useEffect(() => {
 		rebuildTooltips();
 	}, [sidebarOpen]);
 
+<<<<<<< HEAD
 	return (
 		<div className="hidden lg:flex lg:flex-shrink-0">
 			<div className="flex flex-col justify-between items-center pt-4 pb-4 w-16 z-10 bg-menucollapse">
+=======
+	const checkSubmenuActive = (path: string) => {
+		if (path === "/" && location.pathname === "/") {
+			return true;
+		} else {
+			return path !== "/" && location.pathname.includes(path);
+		}
+	}
+
+	return (
+		<div className="hidden lg:flex lg:flex-shrink-0">
+			<div className="flex flex-col justify-between items-center pt-4 pb-4 w-16 overflow-y-auto z-10 bg-menucollapse">
+>>>>>>> dev-1
 				<div className="flex flex-col space-y-2 w-full items-center">
 					<div className="relative w-6 h-6 text-menucollapse hover:text-opacity-80 text-center cursor-pointer" onClick={() => setSidebarOpen(!sidebarOpen)}>
 						<MenuIcon />
 					</div>
 					{!sidebarOpen &&
+<<<<<<< HEAD
 						mainNav.map(({ path, title, icon: Icon, target, children }, i) => {
 							return (
 								<div className="group relative dropdown w-full" key={i}>
@@ -94,6 +140,14 @@ const MainNav = () => {
 										{Icon && <Icon className={classNames("flex-shrink-0 h-6 w-6")} aria-hidden="true" />}
 									</NavLink>
 									{children && children.length > 0 && <SubNav children={children} />}
+=======
+						mainNav.map(({ path, title, icon: Icon, target }, i) => {
+							return (
+								<div key={i} className="relative w-full">
+									<NavLink key={i} exact className="flex flex-col items-center p-2 text-menucollapse group-hover:text-opacity-80" to={{ pathname: path }} isActive={() => checkSubmenuActive(path)} activeClassName="bg-menu bg-opacity-50" target={target ?? ""} rel={target ? "noopener noreferrer" : ""} data-tip={title}>
+										{Icon && <Icon className={classNames("flex-shrink-0 h-6 w-6")} aria-hidden="true" />}
+									</NavLink>
+>>>>>>> dev-1
 								</div>
 							);
 						})}
@@ -104,6 +158,7 @@ const MainNav = () => {
 					<div className="flex items-center justify-center flex-shrink-0 px-6">
 						<AorLogo />
 					</div>
+<<<<<<< HEAD
 					<div className={`h-0 flex-1 flex flex-col${sidebarOpen && !flyout ? " overflow-y-auto" : ""}`}>
 						{mainNav.length > 0 || quickLinks.length > 0 ? (
 							<nav className="px-3 mt-6">
@@ -147,6 +202,31 @@ const MainNav = () => {
 										);
 									})}
 								</div>
+=======
+					<div className="h-0 flex-1 flex flex-col overflow-y-auto">
+						{mainNav.length > 0 || quickLinks.length > 0 ? (
+							<nav className="px-3 mt-6">
+								<div className="space-y-1">
+									{mainNav.map(({ title, path, icon: Icon, target }, i) => {
+										return (
+											<NavLink
+												key={i}
+												exact
+												className="group flex items-center px-2 py-2 text-sm font-medium rounded-md"
+												to={{ pathname: path }}
+												activeClassName="bg-primary text-primary"
+												target={target ?? ""}
+												rel={target ? "noopener noreferrer" : ""}
+												isActive={() => checkSubmenuActive(path)}
+											>
+												{Icon && <Icon className={classNames("text-secondary group-hover:text-opacity-80", "mr-3 flex-shrink-0 h-6 w-6")} aria-hidden="true" />}
+												{title}
+											</NavLink>
+										);
+									})}
+								</div>
+								{/* {spotlightAd} */}
+>>>>>>> dev-1
 								<div className="mt-8">
 									{/* Secondary navigation */}
 									<h3 className="px-3 text-xs font-semibold text-secondary uppercase tracking-wider" id="teams-headline">
@@ -165,7 +245,10 @@ const MainNav = () => {
 						) : (
 							<NavLoader />
 						)}
+<<<<<<< HEAD
 						{spotlightAd}
+=======
+>>>>>>> dev-1
 					</div>
 					<div className="flex flex-col items-center justify-center flex-shrink-0 px-6">
 						<PoweredBy />

@@ -12,10 +12,18 @@ import GlideAdmin from "./glide/GlideAdmin";
 import {formattedProfile, officeProfile, userAccessSelector} from "../user/selectors";
 import {useAppDispatch} from "../../app/hooks";
 import {fetchAllAppSettings, fetchAllOfficeAppSettings} from "./appSettingsSlice";
+<<<<<<< HEAD
 import {accessControlSchema, selectAppSettings, selectOfficeAppSettings} from "./selectors";
 import BooleanSetting from "../../components/widgets/settingsObjects/BooleanSetting";
 import {MemberAccessControlEntity} from "../../util/memberPortalTypes";
 import ContentContainer from "../../components/content/ContentContainer";
+=======
+import {selectAppSettings, selectOfficeAppSettings} from "./selectors";
+import BooleanSetting from "../../components/widgets/settingsObjects/BooleanSetting";
+import {MemberAccessControlEntity} from "../../util/memberPortalTypes";
+import ContentContainer from "../../components/content/ContentContainer";
+import Loader from "../../components/widgets/Loader";
+>>>>>>> dev-1
 
 /**
  * ACCESS LEVELS:
@@ -130,6 +138,10 @@ const AppSettings = () => {
     let appSettings = useSelector(selectAppSettings);
     let officeSettings = useSelector(selectOfficeAppSettings);
     let userAccessLevel = useSelector(userAccessSelector);
+<<<<<<< HEAD
+=======
+    const [isLoading, setIsLoading] = useState(true);
+>>>>>>> dev-1
 
     const [apps, setApps] = useState<MemberAccessControlEntity[]>([]);
 
@@ -141,16 +153,29 @@ const AppSettings = () => {
     }, [dispatch, user]);
 
     useEffect(() => {
+<<<<<<< HEAD
         if (userAccessLevel > 1) {
             setApps(officeSettings);
         } else {
             setApps(appSettings);
+=======
+        if (!userAccessLevel || !appSettings.length || !officeSettings.length) return;
+        if (userAccessLevel > 1) {
+            setApps(officeSettings);
+            setIsLoading(false);
+        } else {
+            setApps(appSettings);
+            setIsLoading(false);
+>>>>>>> dev-1
         }
     }, [userAccessLevel, appSettings, officeSettings]);
 
     const buildApps = () => {
+<<<<<<< HEAD
         console.log(apps)
         console.log(apps.length)
+=======
+>>>>>>> dev-1
         if (user.isCrmlsAdmin || user.isCrmlsAorAdmin || user.isCrmlsOfficeAdmin) {
             return (
                 <ContentContainer title="Application Settings Admin" subTitle="Select an office to change app settings for.">
@@ -165,7 +190,11 @@ const AppSettings = () => {
                             {
                                 apps.map(app => {
                                     if (app.accessLevel) {
+<<<<<<< HEAD
                                         let a = appSettingsEnabled.find(ap => ap.app_short_id === app.applicationNameShort);
+=======
+                                        let a = appSettingsEnabled.find(ap => ap.app_short_id.toLowerCase() === app.applicationNameShort?.toLowerCase());
+>>>>>>> dev-1
 
                                         if (a) {
                                             return <a.member
@@ -199,7 +228,11 @@ const AppSettings = () => {
                                         <InformationCircleIcon className="h-5 w-5 text-blue-400" aria-hidden="true" />
                                     </div>
                                     <div className="ml-3 flex-1 md:flex md:justify-between">
+<<<<<<< HEAD
                                         <p className="text-sm text-blue-700">You do not have the proper credentials. Please contact your broker.</p>
+=======
+                                        <p className="text-sm text-blue-700">You do not have the proper credentials or have no applications available. Please contact your broker.</p>
+>>>>>>> dev-1
                                     </div>
                                 </div>
                             </div>
@@ -210,7 +243,13 @@ const AppSettings = () => {
         }
     }
 
+<<<<<<< HEAD
     return (
+=======
+    return isLoading ? (
+        <Loader />
+    ) : (
+>>>>>>> dev-1
         <>{buildApps()}</>
     );
 }

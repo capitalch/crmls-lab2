@@ -25,7 +25,11 @@ export const changeRegisteredListingStatus = createAsyncThunk(
             try {
                 const response = await put(base_url + `api/app/Registration/${listing.id}`, temp);
                 return temp;
+<<<<<<< HEAD
             } catch (err: any) {
+=======
+            } catch (err) {
+>>>>>>> dev-1
                 return thunkAPI.rejectWithValue(err.response.data);
             }
         }
@@ -42,7 +46,11 @@ export const changeRegisteredListingCancellation = createAsyncThunk(
             try {
                 const response = await put(base_url + `api/app/Registration/${listing.id}`, temp);
                 return temp;
+<<<<<<< HEAD
             } catch (err:any) {
+=======
+            } catch (err) {
+>>>>>>> dev-1
                 return thunkAPI.rejectWithValue(err.response.data);
             }
         }
@@ -75,7 +83,11 @@ export const createRegisteredListing = createAsyncThunk(
         try {
             const response = await post(base_url + 'api/app/Registration', payload);
             return response.data;
+<<<<<<< HEAD
         } catch (err: any) {
+=======
+        } catch (err) {
+>>>>>>> dev-1
             return thunkAPI.rejectWithValue(err.response.data);
         }
     }
@@ -84,9 +96,18 @@ export const createRegisteredListing = createAsyncThunk(
 export const promoteRegisteredListing = createAsyncThunk(
     'registeredListing/promoteRegisteredListing',
     async (id: string, thunkAPI) => {
+<<<<<<< HEAD
         const response = await post(base_url + `api/app/Registration/promote/${id}`, {});
         console.log(response);
         return response.data.results[0];
+=======
+        try {
+            const response = await post(base_url + `api/app/Registration/promote/${id}`, {});
+            return response.data.results[0];
+        } catch (err) {
+            return thunkAPI.rejectWithValue(null);
+        }
+>>>>>>> dev-1
     }
 )
 
@@ -97,7 +118,11 @@ export const updateRegisteredListing = createAsyncThunk(
             const response = await put(base_url + 'api/app/Registration/' + payload.id, payload);
             // our put service returns an empty array, so we can't upsert the results as we'd expect to
             return payload;
+<<<<<<< HEAD
         } catch (err: any) {
+=======
+        } catch (err) {
+>>>>>>> dev-1
             return thunkAPI.rejectWithValue(err.response.data);
         }
     }

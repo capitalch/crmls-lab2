@@ -13,7 +13,11 @@ import ErrorMessage from "../../components/widgets/ErrorMessage";
 import { setUserPrefs } from "../user/userPrefsSlice";
 import { KpiCardFull } from "../../components/widgets/cards/KpiCardFull";
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
+<<<<<<< HEAD
 import { rebuildTooltips } from "../../components/settings/theme/ThemeTooltip";
+=======
+import { hideTooltips, rebuildTooltips } from "../../components/settings/theme/ThemeTooltip";
+>>>>>>> dev-1
 
 type scrollVisibilityApiType = React.ContextType<typeof VisibilityContext>;
 
@@ -96,6 +100,10 @@ export default function UserKpis() {
 				value: newKpiView,
 			})
 		);
+<<<<<<< HEAD
+=======
+		hideTooltips();
+>>>>>>> dev-1
 		setKpiView(newKpiView);
 	};
 

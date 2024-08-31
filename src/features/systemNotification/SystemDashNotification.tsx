@@ -19,7 +19,11 @@ const SystemDashNotification = () => {
 			if (profile.id) {
 				dispatch(fetchAllSystemNotifications());
 			}
+<<<<<<< HEAD
 		}, 60000);
+=======
+		}, 300000);
+>>>>>>> dev-1
 
 		if (profile.id) {
 			dispatch(fetchAllSystemNotifications());

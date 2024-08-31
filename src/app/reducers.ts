@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { combineReducers } from 'redux'
 import { connectRouter } from 'connected-react-router'
 import { History, LocationState } from 'history'
@@ -32,6 +33,34 @@ import { primaryOfficeReducer } from '../components/PrimaryOffice/PrimaryOfficeS
 
 const createRootReducer = (history: History<LocationState>) =>
   combineReducers({
+=======
+import { combineReducers } from 'redux';
+import { connectRouter } from 'connected-react-router';
+import {History, LocationState} from "history";
+import { reducer as oidcReducer } from 'redux-oidc';
+import userReducer from "../features/user/userSlice";
+import userPrefsReducer from "../features/user/userPrefsSlice";
+import notificationReducer from "../features/notification/notificationSlice";
+import notificationsReducer from "../features/notification/notificationsSlice";
+import systemNotificationsReducer from "../features/systemNotification/systemNotificationsSlice";
+import registeredListingReducer from "../features/registeredListing/registeredListingSlice";
+import appSettingsReducer from "../features/appSettings/appSettingsSlice";
+import generalSettingsReducer from "../features/generalSettings/generalSettingsSlice";
+import officeSettingsReducer from "../features/officeSettings/officeSettingsSlice";
+import settingsTypeReducer from "../features/generalSettings/settingsTypeSlice";
+import settingsInputTypeReducer from "../features/generalSettings/settingsInputTypeSlice";
+import settingsGroupReducer from "../features/generalSettings/settingsGroupSlice";
+import trainingPortalReducer from "../features/trainingPortal/trainingPortalSlice";
+import landingPageReducer from "../features/landingPage/landingPageSlice";
+import accessControlReducer from "../features/accessControls/accessControlsSlice";
+import trainingClassRequestReducer from "../features/trainingPortal/trainingClassRequestSlice";
+import dynamicMenuReducer from "../components/menu/dynamicMenuSlice";
+import sideSliderReducer from "../features/dashboard/sideSliderSlice";
+import adsReducer from "../features/ads/adsSlice";
+import persistenceReducer from "../features/user/persistenceSlice";
+
+const createRootReducer = (history: History<LocationState>) => combineReducers({
+>>>>>>> dev-1
     router: connectRouter(history),
     user: userReducer,
     userPrefs: userPrefsReducer,
@@ -54,6 +83,7 @@ const createRootReducer = (history: History<LocationState>) =>
     sideSlider: sideSliderReducer,
     ads: adsReducer,
     persistence: persistenceReducer,
+<<<<<<< HEAD
 
     basicGrid: BasicGridReducer,
     basicSelect: BasicSelectReducer,
@@ -63,4 +93,7 @@ const createRootReducer = (history: History<LocationState>) =>
     standardSelect: standardSelectReducer,
     primaryOffice: primaryOfficeReducer
   })
+=======
+})
+>>>>>>> dev-1
 export default createRootReducer

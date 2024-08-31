@@ -47,7 +47,11 @@ export const ForgotPasswordForm = () => {
 				notification={{
 					show: true,
 					title: "Password Reset Email Sent",
+<<<<<<< HEAD
 					message: `Your password reset request has been received. Please check your email inbox. If your User ID exists in the system, you will be sent a password reset link. If you do not receive an email, please contact support. You will be redirected in ${redirectTimeout} seconds.`,
+=======
+					message: `Your password reset request has been received. Please check your email inbox. If your user ID exists in the system, you will be sent a password reset link. If you do not receive an email, please check your junk email folder or contact support. You will be redirected in ${redirectTimeout} seconds.`,
+>>>>>>> dev-1
 					status: "success",
 					position: "dash",
 					autoHide: false,
@@ -76,9 +80,13 @@ export const ForgotPasswordForm = () => {
 					// Call api to send password reset email
 					if (values.fpUserId) {
 						axios
+<<<<<<< HEAD
 							.post(profile_url + "api/app/AccountContact/ForgotPassword", {
 								LoginId: values.fpUserId,
 							})
+=======
+							.post(profile_url + "api/app/AccountContact/ForgotPassword", { LoginId: values.fpUserId })
+>>>>>>> dev-1
 							.then((response: any) => {
 								resetForm();
 								setPasswordResetSent(true);
@@ -89,9 +97,13 @@ export const ForgotPasswordForm = () => {
 									show({
 										show: true,
 										title: "Error",
+<<<<<<< HEAD
 										message:
 											e.message ??
 											`There was an error sending your password reset email.`,
+=======
+										message: e.message ?? `There was an error sending your password reset email.`,
+>>>>>>> dev-1
 										status: "error",
 										position: "popover",
 										autoHide: 5000,
@@ -103,6 +115,7 @@ export const ForgotPasswordForm = () => {
 					}
 				}}
 			>
+<<<<<<< HEAD
 				{({
 					values,
 					errors,
@@ -135,10 +148,21 @@ export const ForgotPasswordForm = () => {
 								type="submit"
 								disabled={isSubmitting}
 							>
+=======
+				{({ values, errors, touched, handleChange, handleBlur, isSubmitting }) => (
+					<Form className="px-4 2xl:px-8 py-2">
+						<div className="mb-4">
+							<input id="fpUserId" type="text" className="basic-form-field" placeholder="Enter User ID" value={values.fpUserId} onChange={handleChange} onBlur={handleBlur} ref={inputFocus} />
+							{touched.fpUserId && errors.fpUserId && <div className="text-xs text-red-600 text-right mt-1">{errors.fpUserId}</div>}
+						</div>
+						<div className="mb-6 text-center">
+							<button className="cta-button" type="submit" disabled={isSubmitting}>
+>>>>>>> dev-1
 								Send password reset email
 							</button>
 						</div>
 						<div className="text-center">
+<<<<<<< HEAD
 							<span
 								className="basic-link font-medium text-lg"
 								onClick={() => userManager.signinRedirect()}
@@ -149,6 +173,13 @@ export const ForgotPasswordForm = () => {
 						<div className="flex justify-center items-center space-x-2 text-sm text-center mt-2">
 							Forgot your User ID? Please contact your association or support.
 						</div>
+=======
+							<span className="basic-link font-medium text-lg" onClick={() => userManager.signinRedirect()}>
+								Back to Login
+							</span>
+						</div>
+						<div className="flex justify-center items-center space-x-2 text-sm text-center mt-2">Forgot your User ID? Please contact your association or support.</div>
+>>>>>>> dev-1
 					</Form>
 				)}
 			</Formik>
@@ -178,10 +209,14 @@ const ForgotPassword = (props: any) => {
 			<Loader />
 		</div>
 	) : (
+<<<<<<< HEAD
 		<ContentContainer
 			title="Welcome to REcenterhub<sup>TM</sup>"
 			cssClass="public-login relative p-4 sm:p-16"
 		>
+=======
+		<ContentContainer title="Welcome to REcenterhub<sup>TM</sup>" cssClass="public-login relative p-4 sm:p-16">
+>>>>>>> dev-1
 			<section className="h-full">
 				<div className="p-0 container h-full">
 					<div className="g-6 flex h-full flex-wrap items-center justify-center text-primary">
@@ -199,11 +234,15 @@ const ForgotPassword = (props: any) => {
 										</div>
 									</div>
 									<div className="h-48 flex items-center xl:w-7/12 xl:h-auto relative rounded-tl-7xl rounded-br-7xl shadow-solid bg-header">
+<<<<<<< HEAD
 										<img
 											className="absolute inset-0 h-full w-full object-cover rounded-tl-7xl rounded-br-7xl"
 											src="https://cdn.crmls.org/mace/campaigns/REcenterhub Dashboard/REcenterhub-Login-Page-Image.jpg"
 											alt="Log In"
 										/>
+=======
+										<img className="absolute inset-0 h-full w-full object-cover rounded-tl-7xl rounded-br-7xl" src="https://cdn.crmls.org/mace/campaigns/REcenterhub Dashboard/REcenterhub-Login-Page-Image.jpg" alt="Log In" />
+>>>>>>> dev-1
 									</div>
 								</div>
 							</div>

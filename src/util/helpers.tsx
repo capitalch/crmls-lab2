@@ -1,5 +1,6 @@
 import { RegisteredListingPayload } from "../features/registeredListing/selectors";
 import { UserManagerSettings, WebStorageStateStore } from "oidc-client";
+<<<<<<< HEAD
 import {
 	AdjustmentsIcon,
 	MailOpenIcon,
@@ -7,6 +8,10 @@ import {
 } from "@heroicons/react/outline";
 import { FC } from "react";
 import dayjs from "dayjs";
+=======
+import { AdjustmentsIcon, MailOpenIcon, UserIcon } from "@heroicons/react/outline";
+import { FC } from "react";
+>>>>>>> dev-1
 
 export function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
@@ -173,6 +178,7 @@ export function propTypeLookupLabel(label: string) {
 }
 
 export function buildUnparsedAddress(listing: RegisteredListingPayload) {
+<<<<<<< HEAD
 	let address = [
 		listing.streetNumber,
 		listing.streetName,
@@ -181,10 +187,14 @@ export function buildUnparsedAddress(listing: RegisteredListingPayload) {
 		listing.stateOrProvince,
 		listing.postalCode,
 	];
+=======
+	let address = [listing.streetNumber, listing.streetName, listing.unitNumber, listing.city, listing.stateOrProvince, listing.postalCode];
+>>>>>>> dev-1
 
 	return address.join(" ");
 }
 
+<<<<<<< HEAD
 type environment =
 	| "local"
 	| "development"
@@ -283,6 +293,17 @@ export function generateUserManagerConfig(): UserManagerSettings {
 	// console.log(auth);
 	// console.log(root);
 
+=======
+export function generateUserManagerConfig(): UserManagerSettings {
+	let redirect_uri, silent_redirect_uri, post_logout_uri;
+	let root = process.env.REACT_APP_ROOT_URL;
+	let auth = process.env.REACT_APP_AUTH_URL;
+	let clientId = process.env.REACT_APP_AUTH_CLIENT_ID;
+
+	const queryParameters = new URLSearchParams(window.location.search);
+	let loginAor = queryParameters.get("loginAor");
+
+>>>>>>> dev-1
 	redirect_uri = `https://${root}/callback`;
 	silent_redirect_uri = `https://${root}/silent_renew`;
 	post_logout_uri = `https://${root}/logged-out`;
@@ -305,6 +326,7 @@ export function generateUserManagerConfig(): UserManagerSettings {
 		acr_values: loginAor ? loginAor : "",
 	};
 }
+<<<<<<< HEAD
 export function getForgotPasswordUri(): string {
 	// https://recoresolutions.atlassian.net/browse/RSTR-847?focusedCommentId=14803
 	let forgotPasswordUri: string = "";
@@ -335,6 +357,8 @@ export function getForgotPasswordUri(): string {
 
 	return forgotPasswordUri;
 }
+=======
+>>>>>>> dev-1
 
 export function convertUrlToString(url: string) {
 	let convertedLabel: any[] = [];
@@ -351,10 +375,14 @@ export function convertUrlToString(url: string) {
 
 export function passwordValidation(value: string) {
 	// Password must be at least 8 charcters long and contain at least one uppercase, lowercase, number and special character
+<<<<<<< HEAD
 	if (
 		value.length >= 8 &&
 		/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/.test(value)
 	) {
+=======
+	if (value.length >= 8 && /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/.test(value)) {
+>>>>>>> dev-1
 		return true;
 	} else {
 		return false;
@@ -377,6 +405,7 @@ export function secondsToReadable(seconds: any) {
 	}
 	return `${seconds} seconds`;
 }
+<<<<<<< HEAD
 
 export function formatPhoneNumber(number: string) {
 	let cleaned = ("" + number).replace(/\D/g, "");
@@ -447,3 +476,5 @@ export function generateRandomNumberWithCurrentTime() {
 	let seconds = currentTime.getSeconds();
 	return minutes * 100 + seconds;
 }
+=======
+>>>>>>> dev-1

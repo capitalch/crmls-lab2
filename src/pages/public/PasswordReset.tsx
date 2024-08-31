@@ -13,15 +13,22 @@ import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
 import { ThemeTooltip } from "../../components/settings/theme/ThemeTooltip";
 import { secondsToReadable, passwordValidation } from "../../util/helpers";
 import { DashAlert } from "../../components/widgets/alerts/AlertElements";
+<<<<<<< HEAD
 import { connect } from "react-redux";
 import { AppDispatch, RootState } from "../../app/store";
+=======
+import ReactTooltip from "react-tooltip";
+>>>>>>> dev-1
 
 type PasswordResetParams = {
 	resetToken: string;
 };
 
 const PasswordReset = (props: any) => {
+<<<<<<< HEAD
 	const { oidc_user } = props;
+=======
+>>>>>>> dev-1
 	const dispatch = useAppDispatch();
 	const [isLoading, setIsLoading] = useState(true);
 	const [passwordVisible, setPasswordVisible] = useState(false);
@@ -60,6 +67,7 @@ const PasswordReset = (props: any) => {
 	}, [count]);
 
 	useEffect(() => {
+<<<<<<< HEAD
 		if (oidc_user) {
 			// User is logged in, they should be redirected to the "password-change" page instead
 			dispatch(push("/password-change"));
@@ -99,6 +107,42 @@ const PasswordReset = (props: any) => {
 						setIsLoading(false);
 					});
 			}
+=======
+		// First, we need to validate the password token - if it fails, go back to the home page login
+		if (!resetToken) {
+			// password requires a token - if no token, redirect to home page with toast message
+			dispatch(
+				show({
+					show: true,
+					title: "Missing Token",
+					message: `No password token was found.`,
+					status: "error",
+					position: "popover",
+					autoHide: 5000,
+					confirm: false,
+					notificationId: null,
+				})
+			);
+			setInvalidTokenTimeout(true);
+		} else {
+			axios
+				.post(profile_url + "api/app/AccountContact/ValidateResetToken", { Token: resetToken })
+				.then((response: any) => {
+					if (response.data && response.data.isSuccessful) {
+						// Token validation successful - set the user ID from the response and show the reset form
+						setUserId(response.data.results[0].memberLoginId);
+					} else {
+						// Token validation failed - display error and redirect to the home page
+						setInvalidTokenTimeout(true);
+					}
+					setIsLoading(false);
+				})
+				.catch((e) => {
+					// Endpoint failed to respond - display error and redirect to the home page
+					setInvalidTokenTimeout(true);
+					setIsLoading(false);
+				});
+>>>>>>> dev-1
 		}
 	}, [resetToken]);
 
@@ -121,6 +165,10 @@ const PasswordReset = (props: any) => {
 		}),
 		onSubmit: async (values, { resetForm }) => {
 			const resetPayload = {
+<<<<<<< HEAD
+=======
+				loginId: userId,
+>>>>>>> dev-1
 				Token: resetToken,
 				Password: values.newPassword,
 				ConfirmPassword: values.confirmPassword,
@@ -206,7 +254,15 @@ const PasswordReset = (props: any) => {
 							<div className="w-full lg:w-1/3 p-5">
 								<div className="px-8 text-center">
 									<h3 className="pt-4 mb-2 text-2xl">{passwordVerbiage} Your Password</h3>
+<<<<<<< HEAD
 									{userId && <p>User ID: <strong>{userId}</strong></p>}
+=======
+									{userId && (
+										<p>
+											User ID: <strong>{userId}</strong>
+										</p>
+									)}
+>>>>>>> dev-1
 								</div>
 								{invalidTokenTimeout ? (
 									<div className="p-4 pb-0 flex flex-col animate-fade">
@@ -263,6 +319,12 @@ const PasswordReset = (props: any) => {
 													validateNewPassword(e.target.value);
 												}}
 												ref={inputFocus}
+<<<<<<< HEAD
+=======
+												onFocus={() => {
+													ReactTooltip.hide();
+												}}
+>>>>>>> dev-1
 											/>
 											{formik.values.newPassword.length > 0 && (
 												<div className="mt-2">
@@ -271,7 +333,11 @@ const PasswordReset = (props: any) => {
 											)}
 											<div
 												className="absolute right-4 top-3 cursor-pointer"
+<<<<<<< HEAD
 												data-tip={`<b>${passwordVisible ? "Hide" : "Show"} password</b><p>Password must:</p><ul class="list-disc ml-4"><li>be at least 8 characters</li><li>contain one uppercase<li>contain one lowercase</li><li>contain one number</li><li>contain one special character</li></ul></p>`}
+=======
+												data-tip={`<b>${passwordVisible ? "Hide" : "Show"} password</b><p>Password must:</p><ul class="list-disc ml-4"><li>be at least 8 characters</li><li>contain one uppercase<li>contain one lowercase</li><li>contain one number</li><li>contain one special character</li><li>not be a recently used password</li></ul></p>`}
+>>>>>>> dev-1
 											>
 												{passwordVisible ? (
 													<EyeOffIcon className={`h-4 ${validPassword === true ? "text-green-500" : validPassword === false ? "text-red-500" : ""}`} onClick={() => setPasswordVisible(!passwordVisible)} />
@@ -294,6 +360,12 @@ const PasswordReset = (props: any) => {
 												value={formik.values.confirmPassword}
 												onChange={formik.handleChange}
 												onBlur={formik.handleBlur}
+<<<<<<< HEAD
+=======
+												onFocus={() => {
+													ReactTooltip.hide();
+												}}
+>>>>>>> dev-1
 											/>
 											{formik.touched.confirmPassword && formik.errors.confirmPassword && <div className="text-xs text-red-600 text-right mt-1">{formik.errors.confirmPassword}</div>}
 										</div>
@@ -315,6 +387,7 @@ const PasswordReset = (props: any) => {
 			<ThemeTooltip />
 		</ContentContainer>
 	);
+<<<<<<< HEAD
 }
 
 function mapStateToProps(state: RootState) {
@@ -330,3 +403,8 @@ function mapDispatchToProps(dispatch: AppDispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PasswordReset);
+=======
+};
+
+export default PasswordReset;
+>>>>>>> dev-1

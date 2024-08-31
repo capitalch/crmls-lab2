@@ -3,10 +3,17 @@ import { useIdleTimer } from "react-idle-timer";
 import GenericModal from "../modal/GenericModal";
 import { useAppDispatch } from "../../../app/hooks";
 import { push } from "connected-react-router";
+<<<<<<< HEAD
 import { getEnvironmentFromLocation, secondsToReadable } from "../../../util/helpers";
 
 function IdleTimeout() {
 	let environment = getEnvironmentFromLocation();
+=======
+import { secondsToReadable } from "../../../util/helpers";
+
+function IdleTimeout() {
+	let environment = process.env.REACT_APP_DEPLOY_ENV;
+>>>>>>> dev-1
 	const devMode = environment === "local" || environment === "development";
 	const dispatch = useAppDispatch();
 	const [timeout, setTimeout] = useState(7200000); // Timeout after 2 hours of idle time

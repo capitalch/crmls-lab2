@@ -13,7 +13,11 @@ const SystemModalNotification = () => {
 	const [notification, setNotification] = useState<any>();
 
 	useEffect(() => {
+<<<<<<< HEAD
 		const hasUnread = allNotifications.filter(({ id, position }) => position === "modal" && !readNotifications.includes(id));
+=======
+		const hasUnread = allNotifications.filter(({ id, position }) => (position === "modal" || position === "simpleModal") && !readNotifications.includes(id));
+>>>>>>> dev-1
 		if (hasUnread.length > 0) {
 			setNotification(hasUnread[0]);
 		} else {

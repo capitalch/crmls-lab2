@@ -27,6 +27,10 @@ export interface TrainingTopicEntity {
     name?: string | null;
     description?: string | null;
     notes?: string | null;
+<<<<<<< HEAD
+=======
+    videoUrl?: string | null;
+>>>>>>> dev-1
     attachmentUrl?: string | null | undefined;
     isDeleted?: boolean | null;
     createdBy?: string | null;

@@ -34,6 +34,7 @@ const ACLRouter = () => {
 				if (foundComponent) {
 					componentRoutes.push({ ...foundComponent, ...dynamicItem });
 				}
+<<<<<<< HEAD
 				if (dynamicItem.children && dynamicItem.children.length > 0) {
 					dynamicItem.children.forEach((child) => {
 						const foundChildComponent = tempRoutes.find((tr) => tr.path === child.path);
@@ -42,6 +43,8 @@ const ACLRouter = () => {
 						}
 					});
 				}
+=======
+>>>>>>> dev-1
 			});
 			const tabbedRoutes = tempRoutes.filter((tr) => tr.path?.includes("urlTab"));
 			componentRoutes = [...componentRoutes, ...tabbedRoutes];

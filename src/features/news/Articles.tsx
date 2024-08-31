@@ -50,8 +50,11 @@ const NewsArticles = () => {
 
 		const fetchArticles = async () => {
 			try {
+<<<<<<< HEAD
 				console.log(mace_url)
 				console.log(articleQueryText)
+=======
+>>>>>>> dev-1
 				const response = await axios.get(`${mace_url}api/app/Articles/Search?q=${articleQueryText}`, {
 					cancelToken: request.token, // (*)
 				});

@@ -173,7 +173,10 @@ const TrainingCourseRequest = ({ topics }: { topics: { id: string; name: string 
 											<div className="mt-1 sm:mt-0 sm:col-span-2">
 												<div className="max-w-lg flex rounded-md shadow-sm">
 													<Field id="topic" name="topic" as="select" className="input-registered-required">
+<<<<<<< HEAD
 														<option>Select one</option>
+=======
+>>>>>>> dev-1
 														{topics.map((topic) => {
 															return (
 																<option key={topic.id} value={topic.id}>
@@ -189,8 +192,13 @@ const TrainingCourseRequest = ({ topics }: { topics: { id: string; name: string 
 										<div className="crmls-field-wrap">
 											<label htmlFor="comments">Requested Date / Time {RequiredIndicator}</label>
 											<div className="mt-1 sm:mt-0 sm:col-span-2">
+<<<<<<< HEAD
 												<div className="max-w-lg flex rounded-md shadow-sm text-primary">
 													<DateTimePickerComponent id="dateTime" value={dayjs(values.dateTime).toDate()} renderDayCell={disabledDate} min={minDate} max={maxDate} onChange={(e: ChangedEventArgs) => dateTimeChange(e, setFieldValue)} />
+=======
+												<div className="max-w-lg flex rounded-md shadow-sm">
+													<DateTimePickerComponent id="dateTime" value={dayjs(values.dateTime).toDate()} renderDayCell={disabledDate} min={minDate} max={maxDate} onChange={(e: ChangedEventArgs) => dateTimeChange(e, setFieldValue)} cssClass="px-3 py-1 bg-secondary text-secondary" />
+>>>>>>> dev-1
 												</div>
 											</div>
 											{touched.dateTime && errors.dateTime && <div className="text-sm text-red-600">{errors.dateTime}</div>}

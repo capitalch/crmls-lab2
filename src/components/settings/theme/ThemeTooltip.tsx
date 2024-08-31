@@ -7,3 +7,10 @@ export function ThemeTooltip() {
 export function rebuildTooltips () {
 	ReactTooltip.rebuild();
 };
+<<<<<<< HEAD
+=======
+
+export function hideTooltips () {
+	ReactTooltip.hide();
+};
+>>>>>>> dev-1

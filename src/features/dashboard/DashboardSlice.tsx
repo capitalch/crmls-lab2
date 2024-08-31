@@ -12,6 +12,10 @@ export interface ApplicationEntity {
     isDefaultApp?: boolean | null;
     hoverText?: string | null;
     mlsSystem?: boolean | null;
+<<<<<<< HEAD
+=======
+    isNew?: boolean | null;
+>>>>>>> dev-1
 
     /** @format date-time */
     createdOn?: string;
@@ -39,7 +43,12 @@ export interface KpiEntity {
     measure: string,
     changeType?: string,
     changeMeasure?: string,
+<<<<<<< HEAD
     order?: number
+=======
+    order?: number,
+    show?: boolean,
+>>>>>>> dev-1
 }
 
 export interface ArticleCategoryEntity {

@@ -29,6 +29,7 @@ const BooleanSetting = (props: settingProps) => {
                 id: props.application.applicationId,
                 value: value
             }))
+<<<<<<< HEAD
             .then(() => dispatch(show({
                 show: true,
                 title: 'Updated',
@@ -39,6 +40,21 @@ const BooleanSetting = (props: settingProps) => {
                 confirm: false,
                 notificationId: null
             })));
+=======
+            .then(() => {
+                valuePref.current = !valuePref.current
+                dispatch(show({
+                    show: true,
+                    title: 'Updated',
+                    message: 'Setting updated!',
+                    status: 'success',
+                    position: 'popover',
+                    autoHide: 2500,
+                    confirm: false,
+                    notificationId: null
+                }))
+            });
+>>>>>>> dev-1
         }
     }, [props.officeId, props.application.applicationId, dispatch, value]);
 

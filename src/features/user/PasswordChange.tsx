@@ -14,6 +14,11 @@ import { useAppDispatch, useAutoFocus } from "../../app/hooks";
 import { passwordValidation, secondsToReadable } from "../../util/helpers";
 import { push } from "connected-react-router";
 import { DashAlert } from "../../components/widgets/alerts/AlertElements";
+<<<<<<< HEAD
+=======
+import ReactTooltip from "react-tooltip";
+import { fetchMemberData } from "./userSlice";
+>>>>>>> dev-1
 
 function PasswordChange() {
 	const passwordResetTimer = 240; // Reset password field after x seconds (240 = 4min, 900 = 15min)
@@ -119,6 +124,10 @@ function PasswordChange() {
 				.then((response: any) => {
 					if (response.data && response.data.isSuccessful) {
 						// Password reset successful - show success message and timeout redirect to home page login
+<<<<<<< HEAD
+=======
+						dispatch(fetchMemberData({ profile: userProfile, token: userProfile.token ?? "" }));
+>>>>>>> dev-1
 						resetForm();
 						setFieldTimeout(0);
 						startRedirectTimer();
@@ -195,7 +204,13 @@ function PasswordChange() {
 							<div className="w-full lg:w-1/3 p-5">
 								<div className="px-8 text-center">
 									<h3 className="pt-4 mb-2 text-2xl">Change Your Password</h3>
+<<<<<<< HEAD
 									<p>User ID: <strong>{userId}</strong></p>
+=======
+									<p>
+										User ID: <strong>{userId}</strong>
+									</p>
+>>>>>>> dev-1
 								</div>
 								{redirectTimeout > 0 ? (
 									<div className="p-4 pb-0 flex flex-col animate-fade">
@@ -219,7 +234,23 @@ function PasswordChange() {
 								) : (
 									<form id="passwordChangeForm" onSubmit={formik.handleSubmit} className="px-8 py-2">
 										<div className="mb-4 relative">
+<<<<<<< HEAD
 											<input id="password" type="password" className="basic-form-field" placeholder="Current Password" value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur} ref={inputFocus} />
+=======
+											<input
+												id="password"
+												type="password"
+												className="basic-form-field"
+												placeholder="Current Password"
+												value={formik.values.password}
+												onChange={formik.handleChange}
+												onBlur={formik.handleBlur}
+												ref={inputFocus}
+												onFocus={() => {
+													ReactTooltip.hide();
+												}}
+											/>
+>>>>>>> dev-1
 											{fieldTimeout > 0 && (
 												<div className="absolute right-4 top-3 cursor-pointer" data-tip={`This field will reset in ${secondsToReadable(fieldTimeout)}`}>
 													<ClockIcon className="h-4" />
@@ -242,6 +273,12 @@ function PasswordChange() {
 													formik.handleBlur(e);
 													validateNewPassword(e.target.value);
 												}}
+<<<<<<< HEAD
+=======
+												onFocus={() => {
+													ReactTooltip.hide();
+												}}
+>>>>>>> dev-1
 											/>
 											{formik.values.newPassword.length > 0 && (
 												<div className="mt-2">
@@ -250,7 +287,11 @@ function PasswordChange() {
 											)}
 											<div
 												className="absolute right-4 top-3 cursor-pointer"
+<<<<<<< HEAD
 												data-tip={`<b>${passwordVisible ? "Hide" : "Show"} password</b><p>Password must:</p><ul class="list-disc ml-4"><li>be at least 8 characters</li><li>contain one uppercase<li>contain one lowercase</li><li>contain one number</li><li>contain one special character</li></ul></p>`}
+=======
+												data-tip={`<b>${passwordVisible ? "Hide" : "Show"} password</b><p>Password must:</p><ul class="list-disc ml-4"><li>be at least 8 characters</li><li>contain one uppercase<li>contain one lowercase</li><li>contain one number</li><li>contain one special character</li><li>not be a recently used password</li></ul></p>`}
+>>>>>>> dev-1
 											>
 												{passwordVisible ? (
 													<EyeOffIcon className={`h-4 ${validPassword === true ? "text-green-500" : validPassword === false ? "text-red-500" : ""}`} onClick={() => setPasswordVisible(!passwordVisible)} />
@@ -273,6 +314,12 @@ function PasswordChange() {
 												value={formik.values.confirmPassword}
 												onChange={formik.handleChange}
 												onBlur={formik.handleBlur}
+<<<<<<< HEAD
+=======
+												onFocus={() => {
+													ReactTooltip.hide();
+												}}
+>>>>>>> dev-1
 											/>
 											{formik.touched.confirmPassword && formik.errors.confirmPassword && <div className="text-xs text-red-600 text-right mt-1">{formik.errors.confirmPassword}</div>}
 										</div>

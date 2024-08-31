@@ -180,6 +180,10 @@ const RegisteredListingForm = ({ listing }: regListingFormProps) => {
 									notificationId: null,
 								})
 							);
+<<<<<<< HEAD
+=======
+							setSubmitting(false);
+>>>>>>> dev-1
 							return response.id;
 						})
 						// .then((id) => dispatch(push(`/registered/${id}`)))
@@ -197,6 +201,10 @@ const RegisteredListingForm = ({ listing }: regListingFormProps) => {
 									notificationId: null,
 								})
 							);
+<<<<<<< HEAD
+=======
+							setSubmitting(false);
+>>>>>>> dev-1
 						});
 				} else {
 					dispatch(updateRegisteredListing(augmentedValues))
@@ -215,6 +223,10 @@ const RegisteredListingForm = ({ listing }: regListingFormProps) => {
 									notificationId: null,
 								})
 							);
+<<<<<<< HEAD
+=======
+							setSubmitting(false);
+>>>>>>> dev-1
 						})
 						.catch((rejectedValue) => {
 							dispatch(hide());
@@ -230,6 +242,10 @@ const RegisteredListingForm = ({ listing }: regListingFormProps) => {
 									notificationId: null,
 								})
 							);
+<<<<<<< HEAD
+=======
+							setSubmitting(false);
+>>>>>>> dev-1
 						});
 				}
 			}}

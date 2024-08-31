@@ -1,0 +1,50 @@
+.carousel_container{
+   max-height:200px;
+   height:200px;
+   background: lightgray;
+   border-radius: 7px;
+   position:relative;
+   overflow:hidden;
+}
+
+.carousel_container ul{
+    display:none;
+}
+
+.carousel{
+    max-height: 200px !important;
+    height: 200px !important;
+}
+
+.image_loading{
+    width: 100%;
+    text-align: center;
+    top: 70px;
+    position: absolute;;
+    color: white;
+}
+
+.search_input{
+    padding-left:98px;
+}
+
+.main_container{
+    padding-bottom:150px;
+}
+
+.disabled{
+    opacity: .35;
+}
+
+.submit_button{
+    width: auto !important;
+    float: right;
+}
+
+
+
+.report_toggle{
+    position:relative;
+    top:-4px;
+    margin-right:4px;
+}

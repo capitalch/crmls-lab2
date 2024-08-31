@@ -41,7 +41,11 @@ const PopoverNotification = () => {
 		return (
 			<>
 				<SystemPopoverNotification />
+<<<<<<< HEAD
 				<div aria-live="assertive" className="fixed inset-0 flex items-end px-4 py-6 md:pt-20 pointer-events-none sm:p-6 sm:items-start">
+=======
+				<div aria-live="assertive" className="fixed inset-0 flex items-end px-4 py-6 md:pt-20 pointer-events-none sm:p-6 sm:items-start z-10">
+>>>>>>> dev-1
 					<div className="w-full flex flex-col items-center space-y-4 sm:items-end">
 						<Transition
 							show={notification.show}

@@ -13,7 +13,11 @@ import utc from "dayjs/plugin/utc";
 import TrainingMap from "./TrainingMap";
 import Tabs from "../../components/tabs/Tabs";
 import ContentContainer from "../../components/content/ContentContainer";
+<<<<<<< HEAD
 import { ChatIcon, InformationCircleIcon, MapIcon, PaperClipIcon } from "@heroicons/react/outline";
+=======
+import { ChatIcon, DocumentTextIcon, InformationCircleIcon, MapIcon, PaperClipIcon, VideoCameraIcon, PhotographIcon } from "@heroicons/react/outline";
+>>>>>>> dev-1
 import { ThemeTooltip } from "../../components/settings/theme/ThemeTooltip";
 
 type TrainingFormParams = {
@@ -69,7 +73,11 @@ const TrainingRegistrationForm = () => {
 		if (attachmentUrl) {
 			window.open(attachmentUrl);
 		}
+<<<<<<< HEAD
 	}
+=======
+	};
+>>>>>>> dev-1
 
 	const buildTabContent = () => {
 		if (trainingClass) {
@@ -107,6 +115,7 @@ const TrainingRegistrationForm = () => {
 							<div className="mt-1 grid grid-cols-1 gap-4 sm:grid-cols-2">
 								{trainingClass.trainingTopics?.map((t) => {
 									if (t.trainingTopic) {
+<<<<<<< HEAD
 										return (
 											<div key={t.trainingTopic?.id} className="relative rounded-lg border border-default bg-secondary text-secondary px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-divider">
 												{(t.trainingTopic?.notes || t.trainingTopic?.attachmentUrl) && (
@@ -114,6 +123,28 @@ const TrainingRegistrationForm = () => {
 													{t.trainingTopic?.notes && <InformationCircleIcon className="h-4 w-4 text-secondary hover:opacity-80 cursor-pointer focus:outline-none focus:ring-0" data-tip={t.trainingTopic?.notes} />}
 													{t.trainingTopic?.attachmentUrl && <PaperClipIcon className="h-4 w-4 text-secondary hover:opacity-80 cursor-pointer focus:outline-none focus:ring-0" data-tip="Click to view attachment" onClick={() => openTopicAttachment(t.trainingTopic?.attachmentUrl)} />}
 												</div>)}
+=======
+										let attachmentIcon = <></>;
+										if (t.trainingTopic?.attachmentUrl) {
+											let fileExt = t.trainingTopic?.attachmentUrl.split(".").pop() ?? "";
+											if (["pdf", "doc", "docx", "xls", "xlsx", "csv", "ppt", "pptx", "txt"].includes(fileExt)) {
+												attachmentIcon = <DocumentTextIcon className="h-4 text-secondary hover:opacity-80 cursor-pointer focus:outline-none focus:ring-0" data-tip="Click to view attachment" onClick={() => openTopicAttachment(t.trainingTopic?.attachmentUrl)} />;
+											} else if (["jpg", "jpeg", "png", "gif"].includes(fileExt)) {
+												attachmentIcon = <PhotographIcon className="h-4 text-secondary hover:opacity-80 cursor-pointer focus:outline-none focus:ring-0" data-tip="Click to view attachment" onClick={() => openTopicAttachment(t.trainingTopic?.attachmentUrl)} />;
+											} else {
+												attachmentIcon = <PaperClipIcon className="h-4 text-secondary hover:opacity-80 cursor-pointer focus:outline-none focus:ring-0" data-tip="Click to view attachment" onClick={() => openTopicAttachment(t.trainingTopic?.attachmentUrl)} />;
+											}
+										}
+										return (
+											<div key={t.trainingTopic?.id} className="relative rounded-lg border border-default bg-secondary text-secondary px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-divider">
+												{(t.trainingTopic?.notes || t.trainingTopic?.videoUrl || t.trainingTopic?.attachmentUrl) && (
+													<div className="absolute z-10 top-4 right-4 flex space-x-1">
+														{t.trainingTopic?.notes && <InformationCircleIcon className="h-4 text-secondary hover:opacity-80 cursor-pointer focus:outline-none focus:ring-0" data-tip={t.trainingTopic?.notes} />}
+														{t.trainingTopic?.videoUrl && <VideoCameraIcon className="h-4 text-secondary hover:opacity-80 cursor-pointer focus:outline-none focus:ring-0" data-tip="Click to view video" onClick={() => openTopicAttachment(t.trainingTopic?.videoUrl)} />}
+														{attachmentIcon}
+													</div>
+												)}
+>>>>>>> dev-1
 												<div className="flex-shrink-0">
 													<ChatIcon className="h-8 w-8" />
 												</div>

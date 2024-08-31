@@ -3,7 +3,11 @@ import { PlusCircleIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
 import ContentContainer from "../../components/content/ContentContainer";
 import RegListingsButtons from "./RegListingsButtons";
+<<<<<<< HEAD
 import { buildUnparsedAddress, propTypeLookupCode } from "../../util/helpers";
+=======
+import { propTypeLookupCode } from "../../util/helpers";
+>>>>>>> dev-1
 import dayjs from "dayjs";
 import ReactTable from "../../components/widgets/reactTable/ReactTable";
 import { debounce } from "lodash";
@@ -70,11 +74,15 @@ const RegisteredListings = () => {
 					},
 					{
 						Header: "Property Address",
+<<<<<<< HEAD
 						accessor: "unparsedAddress",
 						Cell: ({ row }: { row: any }) => {
 							const rowData = row.original;
 							return buildUnparsedAddress(rowData);
 						},
+=======
+						accessor: "propertyAddress",
+>>>>>>> dev-1
 					},
 					{
 						Header: "Property Type",
@@ -155,9 +163,21 @@ const RegisteredListings = () => {
 					orderBy: fetchOrder,
 				})
 			).then((response: any) => {
+<<<<<<< HEAD
 				setData(response.payload.results);
 				setPageCount(response.payload.totalPages);
 				setTotalResults(response.payload.totalResults);
+=======
+				if (response.payload) {
+					setData(response.payload.results);
+					setPageCount(response.payload.totalPages);
+					setTotalResults(response.payload.totalResults);
+				} else {
+					setData([]);
+					setPageCount(0);
+					setTotalResults(0);
+				}
+>>>>>>> dev-1
 				setIsLoading(false);
 				setFetchCriteria(fetchCriteria);
 				setFetchOrder(fetchOrder);
@@ -183,7 +203,11 @@ const RegisteredListings = () => {
 		}
 		if (searchFilter) {
 			// Array of fields we want to search
+<<<<<<< HEAD
 			["listingId", "streetName", "streetNumber", "postalCode"].forEach((field) => {
+=======
+			["listingId", "propertyAddress"].forEach((field) => {
+>>>>>>> dev-1
 				searchCriteria.push({
 					field: field,
 					op: "Contains",
@@ -215,6 +239,7 @@ const RegisteredListings = () => {
 
 	// Handle search/sort filters
 	const handleStatusFilter = (value: string) => {
+<<<<<<< HEAD
 		setStatusFilter(value);
 		setCurrentPageIndex(0);
 	};
@@ -222,6 +247,15 @@ const RegisteredListings = () => {
 	const handleSearchFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSearchFilter(e.target.value);
 		setCurrentPageIndex(0);
+=======
+		setCurrentPageIndex(0);
+		setStatusFilter(value);
+	};
+
+	const handleSearchFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setCurrentPageIndex(0);
+		setSearchFilter(e.target.value);
+>>>>>>> dev-1
 	};
 	const handleSortBy = (sort: any) => {
 		setSortBy(sort.sortBy[0].id);

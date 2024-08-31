@@ -9,6 +9,7 @@ import Loader from "./components/widgets/Loader";
 import Public from "./pages/public/Public";
 import { loadUser } from "redux-oidc";
 import userManager from "./util/userManager";
+<<<<<<< HEAD
 import "../node_modules/@syncfusion/ej2-react-grids/styles/bootstrap.css";
 
 import '../node_modules/@syncfusion/ej2-base/styles/bootstrap.css';
@@ -20,6 +21,8 @@ import '../node_modules/@syncfusion/ej2-navigations/styles/bootstrap.css';
 import '../node_modules/@syncfusion/ej2-popups/styles/bootstrap.css';
 import '../node_modules/@syncfusion/ej2-splitbuttons/styles/bootstrap.css';
 
+=======
+>>>>>>> dev-1
 library.add(fab);
 
 const App = (props: any) => {

@@ -1,5 +1,10 @@
 import React from "react";
 import {XCircleIcon} from "@heroicons/react/solid";
+<<<<<<< HEAD
+=======
+import { withAITracking } from "@microsoft/applicationinsights-react-js";
+import { ai } from "../../telemetryService";
+>>>>>>> dev-1
 
 const ErrorMessage = ({message}: {message: string}) => {
     return (
@@ -21,4 +26,8 @@ const ErrorMessage = ({message}: {message: string}) => {
     )
 }
 
+<<<<<<< HEAD
 export default ErrorMessage;
+=======
+export default withAITracking(ai.reactPlugin, ErrorMessage);
+>>>>>>> dev-1

@@ -1,6 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+<<<<<<< HEAD
+=======
+@import "@syncfusion/ej2-base/styles/tailwind.css";
+@import "@syncfusion/ej2-icons/styles/tailwind.css";
+@import "@syncfusion/ej2-buttons/styles/tailwind.css";
+@import "@syncfusion/ej2-inputs/styles/tailwind.css";
+@import "@syncfusion/ej2-dropdowns/styles/tailwind.css";
+@import "@syncfusion/ej2-lists/styles/tailwind.css";
+@import "@syncfusion/ej2-navigations/styles/tailwind.css";
+@import "@syncfusion/ej2-splitbuttons/styles/tailwind.css";
+@import "@syncfusion/ej2-grids/styles/tailwind.css";
+@import "@syncfusion/ej2-popups/styles/tailwind.css";
+@import "@syncfusion/ej2-calendars/styles/tailwind.css";
+@import "@syncfusion/ej2-react-schedule/styles/tailwind.css";
+@import "@syncfusion/ej2-react-filemanager/styles/tailwind.css";
+@import "@syncfusion/ej2-layouts/styles/tailwind.css";
+>>>>>>> dev-1
 
 @layer components {
     .input-registered, .input-registered-required { @apply flex-1 block w-full focus:ring-0 focus:border-divider min-w-0 rounded-sm sm:text-sm border-default bg-secondary text-secondary; }
@@ -9,12 +26,23 @@
     /** General CSS **/
     .crmls-link { @apply text-header hover:text-opacity-50; }
     .basic-link { @apply inline-block text-sm text-header align-baseline hover:text-opacity-80 cursor-pointer; }
+<<<<<<< HEAD
     .basic-form-field { @apply w-full block px-4 py-2 font-normal bg-secondary text-secondary border border-solid rounded shadow-sm transition ease-in-out border-divider focus:border-divider; }
     .cta-button { @apply py-4 px-16 m-2 text-xl text-white font-medium transition-colors duration-150 bg-nb-yellow rounded-lg hover:bg-opacity-80; }
 
     /** Tables CSS **/
     .crmls-table-main-actions { @apply my-1 mb-2 relative flex justify-between px-1 }
     .crmls-table-main-actions div { @apply flex flex-row-reverse space-x-4}
+=======
+    .basic-form-field, .basic-form-field-listbox button, .basic-form-field-typeahead .input-registered { @apply w-full block px-4 py-2 font-normal bg-secondary text-secondary border border-solid rounded shadow-sm transition ease-in-out border-divider focus:border-divider; }
+    .cta-button { @apply py-4 px-16 m-2 text-xl text-white font-medium transition-colors duration-150 bg-nb-yellow rounded-lg hover:bg-opacity-80; }
+    .basic-form-field-listbox button {height:42px;}
+    .action-button { @apply inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-inverse hover:bg-opacity-70 focus:outline-none focus:ring-0 focus:ring-offset-0 items-center; }
+
+    /** Tables CSS **/
+    .crmls-table-main-actions { @apply my-1 mb-2 relative flex flex-col justify-between px-1 space-x-0 sm:space-x-2 space-y-2 sm:space-y-0 sm:flex-row }
+    .crmls-table-main-actions div { @apply flex flex-col items-center space-x-0 sm:space-x-2 space-y-2 sm:space-y-0 sm:flex-row }
+>>>>>>> dev-1
     .crmls-table-main-container { @apply py-2 align-middle inline-block min-w-full }
     .crmls-table-wrapper { @apply shadow overflow-hidden rounded-lg }
     .crmls-table { @apply min-w-full divide-y divide-default border border-default }
@@ -37,7 +65,11 @@
     /** Tabs CSS **/
     .crmls-tabs {}
     .crmls-tab-list { @apply flex flex-col sm:flex-row }
+<<<<<<< HEAD
     .crmls-tab { @apply text-header text-opacity-50 py-4 px-6 block focus:outline-none cursor-pointer }
+=======
+    .crmls-tab { @apply text-header text-opacity-50 py-4 px-6 block focus:outline-none cursor-pointer relative }
+>>>>>>> dev-1
     .crmls-tab.active { @apply text-header border-b-2 border-divider }
     .crmls-tab-content { @apply mt-6 sm:mt-5 space-y-6 sm:space-y-5 max-w-full px-2 }
 
@@ -57,6 +89,28 @@
     .e-input-group { @apply bg-secondary px-3 py-1 text-primary !important; }
     .e-input-group span { @apply text-secondary !important; }
     .dark input[type="date"]::-webkit-calendar-picker-indicator, .contrast input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); } /* This will invert the calendar icon based on theme for date inputs */
+<<<<<<< HEAD
+=======
+    .e-grid .e-table { @apply bg-primary text-primary !important }
+    .e-grid .e-rowcell:not(.e-editedbatchcell):not(.e-updatedtd), .e-grid .e-detailrowcollapse:not(.e-editedbatchcell):not(.e-updatedtd), .e-grid .e-detailrowexpand:not(.e-editedbatchcell):not(.e-updatedtd), .e-grid .e-gridcontent .e-rowdragdrop:not(.e-editedbatchcell):not(.e-updatedtd), .e-grid .e-gridheader .e-rowdragdrop:not(.e-editedbatchcell):not(.e-updatedtd), .e-grid .e-emptyrow:not(.e-editedbatchcell):not(.e-updatedtd), .e-grid th.e-headercell[aria-sort='ascending'] .e-headertext, .e-grid th.e-headercell[aria-sort='descending'] .e-headertext, .e-fe-popup.e-dialog td { @apply text-primary !important }
+    .e-grid .e-headercell, .e-grid .e-detailheadercell, .e-grid.e-gridhover tr[role='row']:not(.e-editedrow):hover .e-rowcell:not(.e-cellselectionbackground):not(.e-active):not(.e-updatedtd):not(.e-indentcell), .e-grid.e-gridhover tr[role='row']:hover .e-detailrowcollapse:not(.e-cellselectionbackground):not(.e-active):not(.e-updatedtd):not(.e-indentcell), .e-grid.e-gridhover tr[role='row']:hover .e-rowdragdrop:not(.e-cellselectionbackground):not(.e-active):not(.e-updatedtd):not(.e-indentcell), .e-grid.e-rtl .e-gridhover tr[role='row']:hover .e-rowdragdrop:not(.e-cellselectionbackground):not(.e-active):not(.e-updatedtd):not(.e-indentcell), .e-grid.e-gridhover tr[role='row']:hover .e-detailrowexpand:not(.e-cellselectionbackground):not(.e-active):not(.e-updatedtd):not(.e-indentcell), .e-grid td.e-active, .e-dlg-overlay { @apply bg-secondary text-secondary !important }
+    .e-grid, .e-grid .e-rowcell, .e-grid .e-groupcaption, .e-grid .e-indentcell, .e-grid .e-recordplusexpand, .e-grid .e-recordpluscollapse, .e-grid .e-rowdragdropcell, .e-grid .e-detailrowcollapse, .e-grid .e-detailrowexpand, .e-grid .e-detailindentcell, .e-grid .e-detailcell, .e-grid .e-headercell, .e-grid .e-detailheadercell, .e-grid .e-gridheader { @apply border-divider bg-primary text-primary !important }
+     .e-pager, .e-pager .e-pagercontainer, .e-pager .e-firstpage, .e-pager .e-prevpage, .e-pager .e-firstpagedisabled, .e-pager .e-prevpagedisabled, .e-pager .e-nextpage, .e-pager .e-lastpage, .e-pager .e-nextpagedisabled, .e-pager .e-lastpagedisabled, .e-pager .e-prevpagedisabled, .e-pager .e-prevpage, .e-pager .e-nextpage, .e-pager .e-nextpagedisabled, .e-pager .e-lastpagedisabled, .e-pager .e-lastpage, .e-pager .e-firstpage, .e-pager .e-firstpagedisabled, .e-pager .e-numericitem, .e-dlg-header-content, .e-dlg-content, .e-footer-content { @apply bg-primary text-primary border-default !important }
+    .e-pager .e-currentitem, .e-pager .e-currentitem:hover, .e-toolbar { @apply bg-primary text-header !important }
+    .e-filemanager .e-toolbar, .e-toolbar ,.e-toolbar-items, .e-splitter.e-splitter-horizontal, .e-splitter.e-splitter-vertical, .e-splitter.e-splitter-horizontal .e-pane, .e-splitter.e-splitter-vertical .e-pane, .e-grid .e-content, .e-filemanager, .e-filemanager .e-address, .e-filemanager .e-address .e-addressbar-ul .e-breadcrumb-menu .e-breadcrumb-submenu { @apply bg-primary text-primary border-default !important }
+    .e-toolbar .e-toolbar-items .e-toolbar-item .e-tbar-btn.e-btn, .e-filemanager .e-treeview .e-list-item.e-active > .e-fullrow, .e-treeview .e-list-item.e-active > .e-fullrow { @apply bg-primary border-default !important }
+    .e-toolbar .e-toolbar-items .e-toolbar-item .e-tbar-btn-text, .e-toolbar .e-tbar-btn.e-btn .e-icons, .e-filemanager .e-address .e-search-wrap .e-input-group .e-input, .e-filemanager .e-address .e-address-list-item, .e-treeview .e-list-text, .e-treeview .e-list-item div.e-icons::before, .e-filemanager .e-address .e-address-list-item:last-child .e-list-text, .e-filemanager .e-address .e-icons, .e-search-wrap .e-input-group .e-input::placeholder, .e-dlg-header, .e-dlg-header *, .e-btn.e-flat, .e-css.e-btn.e-flat, .e-dialog .e-btn .e-btn-icon.e-icon-dlg-close { @apply text-primary !important }
+    .e-footer-content .e-btn.e-primary.e-flat:not([DISABLED]) { @apply bg-header text-inverse !important }
+
+    /** TinyMCE overrides **/
+    .tox-tinymce, .tox:not(.tox-tinymce-inline) .tox-editor-header, .tox .tox-toolbar, .tox .tox-toolbar__overflow, .tox .tox-toolbar__primary, .tox .tox-tbtn, .tox .tox-tbtn:hover, .tox .tox-statusbar, .tox .tox-menubar, .tox .tox-mbtn { @apply bg-secondary text-secondary border-default !important; }
+    .tox .tox-toolbar-overlord, .tox .tox-collection--list .tox-collection__item--active:not(.tox-collection__item--state-disabled), .tox .tox-menu { @apply bg-primary text-primary !important; }
+    .tox .tox-collection__item-label, .tox .tox-collection__item-icon { @apply text-primary !important; }
+    .tox .tox-collection--list .tox-collection__item--active, .tox .tox-collection--list .tox-collection__item--enabled { @apply bg-header text-white !important; }
+    .tox .tox-collection--list .tox-collection__item--enabled .tox-collection__item-label { @apply text-white !important; }
+    .tox .tox-tbtn { @apply text-secondary !important; }
+    .tox .tox-tbtn svg { @apply fill-current !important; }
+>>>>>>> dev-1
 
     /** Default article styles (if no inline styles are added via the wysiwyg editor when creating an article, these will be defaults for common tags) **/
     .article-details h1 { @apply mb-4 text-5xl font-extrabold text-header; }
@@ -79,6 +133,16 @@
     .password-strength-meter[data-color = "#03a2cc"] { background-color: #03a2cc; }
     .password-strength-meter[data-color = "#10d652"] { background-color: #10d652; }
 
+<<<<<<< HEAD
+=======
+    /** React Slider **/
+    .slide-pane__header { @apply bg-secondary !important; }
+    .slide-pane__title { @apply text-secondary; }
+    .slide-pane__close { @apply text-secondary; }
+    .slide-pane__content { @apply bg-primary text-primary; }
+
+
+>>>>>>> dev-1
     /** Public pages css **/
     .public-dashboard-wrapper { @apply flex flex-wrap items-center justify-between mt-8 3xl:mt-16; }
     /* .public-dashboard-wrapper { height: calc(100vh - 90px); } */
@@ -102,7 +166,11 @@
 .__react_component_tooltip::before { z-index: -1 !important; }
 
 /* marketplace apps badge css */
+<<<<<<< HEAD
 .app-card-marketplace:after, .app-card-aor:after, .app-card-broker:after {
+=======
+.app-card-marketplace:after, .app-card-aor:after, .app-card-broker:after, .app-card-new:after {
+>>>>>>> dev-1
     height: 0;
     border-style: solid;
     border-width: 0 0 25px 25px;
@@ -116,6 +184,7 @@
 .app-card-marketplace:after { content: 'm'; border-color: transparent transparent #a1a1aa transparent; }
 .app-card-aor:after { content: 'a'; border-color: transparent transparent #aadbaa transparent; }
 .app-card-broker:after { content: 'b'; border-color: transparent transparent #da9fb2 transparent; }
+<<<<<<< HEAD
 .react-horizontal-scrolling-menu--inner-wrapper{ position: absolute; width: 100%; }
 .box-shadow-lg { box-shadow: -30px 30px var(--bg-header) }
 
@@ -138,6 +207,30 @@
 .menu-scale-0 { transform: scale(0) }
 .menu-min-w-32 { min-width: 8rem }
 
+=======
+.app-card-new:after { content: 'New!'; font-size: .5rem; line-height: 1rem; border-width: 0 0 15px 18px; border-color: transparent transparent #d32323 transparent; opacity: 1; }
+.react-horizontal-scrolling-menu--inner-wrapper{ position: absolute; width: 100%; }
+.box-shadow-lg { box-shadow: -30px 30px var(--bg-header) }
+
+/* Support Icon Flyout Menu */
+.support-menu { transition: all 0.25s ease-in-out; transition-delay: 0.75s; -webkit-transform: rotate(0deg); transform: rotate(0deg); right: 2%; z-index: 99999; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }  
+.support-menu li { transition: all 0.25s ease-in-out; transition-delay: 0.5s; width: 49.4px; height: 49.4px; margin: -29.7px 0 0 -29.7px; opacity: 0; border-radius: 50%; list-style-type: none;  position: fixed; z-index: 100; left: 50%; top: 50%; display: flex; justify-content: center; align-items: center; }
+.support-menu li li:nth-of-type(1) { -webkit-transform: rotate(180deg) translate(0, 0); transform: rotate(180deg) translate(0, 0); animation-name: crazy; animation-duration: 2s; animation-delay: 1s; animation-iteration-count: infinite; }
+.support-menu li li:nth-of-type(2) { -webkit-transform: rotate(0deg) translate(0, 0); transform: rotate(0deg) translate(0, 0); }
+.support-menu li li:nth-of-type(3) { -webkit-transform: rotate(0deg) translate(0, 0); transform: rotate(0deg) translate(0, 0); }
+.support-menu:hover li { transition-delay: 0.1s; opacity: 1; }
+.support-menu:hover li:nth-of-type(1) { -webkit-transform: rotate(229deg) translate(0, 90px); transform: rotate(229deg) translate(0, 90px); }
+.support-menu:hover li:nth-of-type(2) { -webkit-transform: rotate(180deg) translate(0, 90px); transform: rotate(180deg) translate(0, 90px); }
+.support-menu:hover li:nth-of-type(3) { -webkit-transform: rotate(130deg) translate(0, 90px); transform: rotate(130deg) translate(0, 90px); }
+.support-menu li:nth-of-type(1) svg { transform: rotate(120deg); }
+.support-menu li:nth-of-type(2) svg { transform: rotate(180deg); }
+.support-menu li:nth-of-type(3) svg { transform: rotate(140deg); }
+
+.insight-search-input{ width:100%; border-radius: 6px; }
+.insight-search-input-loader{ position: absolute; bottom: 11px; right: 16px; }
+.dark .insight-search-input, .contrast .insight-search-input{ background-color:#17202a; color:white; }
+.dark .insight-search-input-loader span span, .contrast .insight-search-input-loader span span { background-color:white; }
+>>>>>>> dev-1
 
 .light {
     --bg-header: 0 84 154; /* blue for header/button */
@@ -227,7 +320,61 @@
     --border-menu: 15 14 14;
 }
 
+<<<<<<< HEAD
 /* Syncfusion GridComponent alternative row color */
 .e-grid .e-altrow {
     background-color: #fafafa;
+=======
+.custom-input__input, .basic-form-field-typeahead input:focus {
+    border: none !important;
+    outline: none !important;
+    --tw-ring-color: none;
+}
+
+.dark .custom-input__control, .dark .custom-input__menu, .contrast .custom-input__control, .contrast .custom-input__menu { 
+    border-width: 0 !important;
+}
+
+.dark .custom-input__control, .dark .custom-input__menu { 
+    background-color: #17202a !important;
+}
+
+.contrast .custom-input__control, .contrast .custom-input__menu { 
+    background-color:#141414 !important;
+}
+
+.dark .custom-input__menu { 
+    color:white !important;
+}
+.contrast .basic-form-field-typeahead input {
+    color: white !important;
+}
+.contrast .custom-input__placeholder{
+    opacity: .5 !important;
+}
+
+.dark .basic-form-field-typeahead input {
+    color: rgb(var(--text-primary) / var(--tw-text-opacity))  !important;
+}
+
+.contrast .custom-input__option--is-focused, .dark .custom-input__option--is-focused{
+    background-color: #333333 !important;
+}
+
+.basic-form-field-typeahead .input-registered {
+    padding-left: 0;
+    padding-right: 0;
+    height: 42px;
+    padding-top: 0;
+}
+
+.carousel .thumb img {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.carousel .slide img {
+    width: auto;
+    height:200px;
+>>>>>>> dev-1
 }

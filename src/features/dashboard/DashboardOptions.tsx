@@ -13,9 +13,18 @@ import ThemeToggle from "../../components/settings/theme/ThemeToggle";
 import { selectSlider, showSliderView } from "../../features/dashboard/sideSliderSlice";
 import Loader from "../../components/widgets/Loader";
 import { NavLink } from "react-router-dom";
+<<<<<<< HEAD
 import { rebuildTooltips } from "../../components/settings/theme/ThemeTooltip";
 import { BillboardSectionConfig } from "../ads/AdContainer";
 import { selectAllAds } from "../ads/adsSlice";
+=======
+import { hideTooltips, rebuildTooltips } from "../../components/settings/theme/ThemeTooltip";
+import { BillboardSectionConfig } from "../ads/AdContainer";
+import { selectAllAds } from "../ads/adsSlice";
+import dayjs from "dayjs";
+
+export const newAppDateCheck = dayjs().subtract(30, "day");
+>>>>>>> dev-1
 
 function DashboardOptions() {
 	const allAds = useSelector(selectAllAds);
@@ -105,8 +114,14 @@ function DashboardOptions() {
 		if (allAds.length > 0) {
 			const adsResponse = allAds[0];
 			const dashboardAd = adsResponse.impressions.find((impression: any) => impression.tagName === "dashboard-billboard");
+<<<<<<< HEAD
 
 			let tmpStaticSections: any[] = adsResponse?.isEnabled && dashboardAd?.isEnabled ? BillboardSectionConfig() : [];
+=======
+			const spotlightAd = adsResponse.impressions.find((impression: any) => impression.tagName === "spotlight-ad");
+
+			let tmpStaticSections: any[] = adsResponse?.isEnabled && (dashboardAd?.isEnabled || spotlightAd?.isEnabled) ? BillboardSectionConfig() : [];
+>>>>>>> dev-1
 			tmpStaticSections = [
 				...tmpStaticSections,
 				...[
@@ -223,7 +238,11 @@ function DashboardOptions() {
 																			<p className="text-sm">{section.description}</p>
 																		</div>
 																		<div className="flex flex-col items-center justify-center z-10">
+<<<<<<< HEAD
 																			<SectionShowIcon section={section} />
+=======
+																			<div data-tip={`${section.show === true ? "Hide" : "Show"} Section`} onClick={() => hideTooltips()}><SectionShowIcon section={section} /></div>
+>>>>>>> dev-1
 																		</div>
 																	</div>
 																</div>
@@ -252,6 +271,10 @@ function DashboardOptions() {
 					const aorApps = appResults.filter((app: ApplicationEntity) => app.applicationCategory?.toLowerCase() === "aor");
 					const brokerApps = appResults.filter((app: ApplicationEntity) => app.applicationCategory?.toLowerCase() === "broker");
 					const marketplaceApps = appResults.filter((app: ApplicationEntity) => app.applicationCategory?.toLowerCase() === "marketplace");
+<<<<<<< HEAD
+=======
+					appResults.map((app: ApplicationEntity) => (app.isNew = dayjs(app.createdOn).isAfter(newAppDateCheck)));
+>>>>>>> dev-1
 
 					if (applications.length > 0) {
 						setSidebarContent(
@@ -361,7 +384,11 @@ function DashboardOptions() {
 																				<p className="text-sm">{kpi.description}</p>
 																			</div>
 																			<div className="flex flex-col items-center justify-center z-10">
+<<<<<<< HEAD
 																				<KpiShowIcon kpi={kpi} />
+=======
+																				<div data-tip={`${kpi.show === true ? "Hide" : "Show"} Section`} onClick={() => hideTooltips()}><KpiShowIcon kpi={kpi} /></div>
+>>>>>>> dev-1
 																			</div>
 																		</div>
 																	</div>
@@ -499,7 +526,34 @@ function DashboardOptions() {
 
 	return (
 		<>
+<<<<<<< HEAD
 			<aside className="z-10 w-10 bg-secondary border-l border-divider shadow-2xl">
+=======
+			{/* mobile settings tray */}
+			<aside className="z-10 w-full bg-primary border-b border-divider absolute top-0 sm:hidden">
+				<div className="flex flex-row-reverse w-full items-end py-1 px-4">
+					{sectionOptions
+						.filter((option) => option.visible)
+						.map((option, i) => {
+							if (option.component) {
+								return (
+									<div key={i} className="relative text-center p-1">
+										{option.component}
+									</div>
+								);
+							} else {
+								return (
+									<div key={i} className="relative text-center p-1" onClick={option.onClick} data-tip={option.title}>
+										{option.icon}
+									</div>
+								);
+							}
+						})}
+				</div>
+			</aside>
+			{/* desktop settings tray */}
+			<aside className="z-10 w-10 bg-secondary border-l border-divider shadow-2xl hidden sm:block">
+>>>>>>> dev-1
 				<div className="flex flex-col w-full items-center py-2">
 					{sectionOptions
 						.filter((option) => option.visible)

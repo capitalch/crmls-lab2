@@ -1,0 +1,15 @@
+.new_note{
+    font-size: 10px;
+    font-style: italic;
+    float: left;
+    margin-left: 15px;
+}
+
+.close_icon{
+    position: absolute;
+    right: 6px;
+    top: 5px;
+    z-index: 1;
+    color: gray;
+    cursor:pointer;
+}

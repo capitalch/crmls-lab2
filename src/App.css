@@ -37,3 +37,11 @@
     transform: translateY(0px);
   }
 }
+<<<<<<< HEAD
+=======
+
+/* System notification template styles */
+table.deviceWidth td.center a { display: inline-block !important; }
+table.deviceWidth hr { margin: 10px 0px !important; }
+table[role="presentation"] p { margin-bottom: 10px !important; }
+>>>>>>> dev-1

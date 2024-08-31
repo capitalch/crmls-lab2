@@ -3,9 +3,17 @@ import { useAppDispatch } from "../../../app/hooks";
 import { SystemNotificationStatusEntity } from "../../../features/notification/notificationTypes";
 import { classNames } from "../../../util/helpers";
 import { hide } from "../../../features/notification/notificationSlice";
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { userProfile } from "../../../features/user/selectors";
+=======
+import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { userProfile } from "../../../features/user/selectors";
+import { useEffect, useState } from "react";
+import ReactModal from "react-modal";
+>>>>>>> dev-1
 
 export const AlertIcon = ({ color }: { color: any }) => {
 	switch (color) {
@@ -21,6 +29,18 @@ export const AlertIcon = ({ color }: { color: any }) => {
 	}
 };
 
+<<<<<<< HEAD
+=======
+export const AlertPing = ({ color = "red", customCss = "absolute -top-1 -right-1 h-2 w-2", title = "" }: { color?: string; customCss?: string; title?: string }) => {
+	return (
+		<span className={customCss} title={title}>
+			<span className={`animate-ping absolute h-full w-full rounded-full bg-${color}-400 opacity-100`}></span>
+			<span className={`absolute h-full w-full rounded-full h-3 w-3 bg-${color}-500`}></span>
+		</span>
+	);
+};
+
+>>>>>>> dev-1
 export const DashAlert = ({ notification, callback, canClose = true }: { notification: any; callback?: () => void; canClose?: boolean }) => {
 	const dispatch = useAppDispatch();
 	const statusColor = notification.systemNotificationStatus?.color || "gray";
@@ -74,12 +94,26 @@ export const ModalAlert = ({ notification, callback }: { notification: any; call
 	const statusIcon = <AlertIcon color={notification.systemNotificationStatus?.color || "blue"} />;
 	let profile = useSelector(userProfile);
 
+<<<<<<< HEAD
+=======
+	const handleClose = () => {
+		if (callback) {
+			callback();
+		}
+	};
+
+>>>>>>> dev-1
 	const handleMustAcknowledge = () => {
 		if (profile?.member?.id) {
 			const acknowledgeData = {
 				notificationId: notification.id,
+<<<<<<< HEAD
 				memberId: profile.member.id
 			}
+=======
+				memberId: profile.member.id,
+			};
+>>>>>>> dev-1
 
 			//@todo - vk - add acknowledgment endpoint call here
 			console.log("Send acknowledgment --->", acknowledgeData);
@@ -99,6 +133,17 @@ export const ModalAlert = ({ notification, callback }: { notification: any; call
 					&#8203;
 				</span>
 				<div className="inline-block align-bottom bg-primary rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-5xl sm:w-full sm:p-6">
+<<<<<<< HEAD
+=======
+					{notification.position === "simpleModal" && (
+						<div className="hidden sm:block absolute top-0 right-0 pt-4 pr-4">
+							<button type="button" className="rounded-md hover:text-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={handleClose}>
+								<span className="sr-only">Close</span>
+								<XIcon className="h-6 w-6 text-header" />
+							</button>
+						</div>
+					)}
+>>>>>>> dev-1
 					<div className="relative inline-block align-bottom text-left overflow-hidden transform transition-all sm:mt-4 sm:align-middle w-full">
 						<div className="p-0">
 							<div className="sm:flex sm:items-start">
@@ -111,7 +156,11 @@ export const ModalAlert = ({ notification, callback }: { notification: any; call
 								</div>
 							</div>
 						</div>
+<<<<<<< HEAD
 						{notification.notificationId || notification.url ? (
+=======
+						{(notification.notificationId || notification.url) && (
+>>>>>>> dev-1
 							<div className="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse mt-2 space-x-2">
 								{notification.notificationId && (
 									<Link to={`/notifications?id=${notification.notificationId}`} onClick={callback}>
@@ -129,6 +178,7 @@ export const ModalAlert = ({ notification, callback }: { notification: any; call
 									</Link>
 								)}
 							</div>
+<<<<<<< HEAD
 						) : (
 							""
 						)}
@@ -136,6 +186,15 @@ export const ModalAlert = ({ notification, callback }: { notification: any; call
 							<input type="checkbox" className="mx-2 cursor-pointer border border-header bg-primary" id="acknowledge" name="acknowledge" onClick={handleMustAcknowledge} />
 							<label htmlFor="acknowledge">I acknowledge this message</label>
 						</div>
+=======
+						)}
+						{notification.position === "modal" && (
+							<div className="bg-secondary text-secondary p-4 sm:flex sm:flex-row-reverse items-center mt-4">
+								<input type="checkbox" className="mx-2 cursor-pointer border border-header bg-primary" id="acknowledge" name="acknowledge" onClick={handleMustAcknowledge} />
+								<label htmlFor="acknowledge">I acknowledge this message</label>
+							</div>
+						)}
+>>>>>>> dev-1
 					</div>
 				</div>
 			</div>
@@ -154,3 +213,79 @@ export const AlertBadge = ({ status }: { status?: SystemNotificationStatusEntity
 export const AlertIndicator = ({ status }: { status?: SystemNotificationStatusEntity }) => {
 	return <span className={classNames("absolute top-2 right-2 rounded-full h-2 w-2", `bg-${status?.color ?? "blue"}-500`)}></span>;
 };
+<<<<<<< HEAD
+=======
+
+export const PasswordResetAlert = () => {
+	const location = useLocation();
+	const profile = useSelector(userProfile);
+	const [showModal, setShowModal] = useState<boolean>(false);
+
+	const checkResetRequired = () => {
+		if (profile && profile.requiredPasswordUpdate) {
+			setShowModal(true);
+		}
+		if (location && (location.pathname === "/password-change" || location.pathname === "/logout")) {
+			setShowModal(false);
+		}
+	};
+
+	useEffect(() => {
+		checkResetRequired();
+	}, [profile, location]);
+
+	return location.pathname !== "/password-change" ? (
+		<ReactModal
+			isOpen={showModal}
+			contentLabel="Password Reset Required"
+			appElement={document.getElementById("root") ?? undefined}
+			style={{
+				overlay: {
+					backgroundColor: "transparent",
+					inset: "unset",
+					zIndex: 10,
+				},
+			}}
+		>
+			<div className="fixed z-10 inset-0 overflow-y-auto article-details display-block" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+				<div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block">
+					<div className="fixed inset-0 bg-secondary bg-opacity-75 transition-opacity" aria-hidden="true" />
+					<span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
+						&#8203;
+					</span>
+					<div className="inline-block w-full align-bottom bg-primary rounded-lg p-4 text-center overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xl sm:p-6">
+						<div className="relative inline-block align-bottom overflow-hidden transform transition-all sm:mt-4 sm:align-middle w-full">
+							<div className="p-0">
+								<div className="sm:flex sm:items-start">
+									<div className={classNames("mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full sm:mx-0 sm:h-10 sm:w-10", `bg-red-100`)}>
+										<AlertIcon color="red" />
+									</div>
+									<div className="mt-3 sm:mt-0 sm:ml-4 w-full">
+										<h3 className="text-lg leading-6 font-medium text-primary text-capitalize">Password Reset Required</h3>
+										<p className="text-sm">Your current password has expired. You will need to change your password to continue. Please click the button below to change your password.</p>
+										<Link to="/password-change">
+											<button type="button" className="cta-button">
+												Change Password
+											</button>
+										</Link>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ReactModal>
+	) : (
+		<></>
+	);
+};
+
+export const GenericBadge = ({ title, className = "" }: { title: string; className?: string; }) => {
+	return (
+		<span data-tip={title ?? ""} className={classNames("inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium text-white", className)}>
+			{title ?? ""}
+		</span>
+	);
+};
+>>>>>>> dev-1

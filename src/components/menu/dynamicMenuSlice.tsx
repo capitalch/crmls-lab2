@@ -21,7 +21,10 @@ export type dynamicMenuType = {
     createdOn: string,
     modifiedOn: string,
     modifiedBy: string,
+<<<<<<< HEAD
 	children?: dynamicMenuType[]
+=======
+>>>>>>> dev-1
 }
 
 export const dynamicMenuAdapter = createEntityAdapter<dynamicMenuType>();
@@ -38,9 +41,13 @@ export const fetchDynamicMenu = createAsyncThunk(
     'dynamicMenu/fetchDynamicMenu',
     async () => {
         const response = await getDynamicMenus();
+<<<<<<< HEAD
 
         const results:any[] = response.data.results ?? [];
         return(results)
+=======
+        return response.data.results ?? [];
+>>>>>>> dev-1
     })
 
 export const dynamicMenuSlice = createSlice({

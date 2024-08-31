@@ -60,11 +60,19 @@ export const ApplicationCard = ({ application, showFavorite }: ApplicationCardEn
 		<>
 			<div className="flex flex-col items-center flex-shrink-0" data-tip={`<p class="text-md font-semibold">${application.name}</p>${application.hoverText ? '<p class="text-xs">' + application.hoverText + "</p>" : ""}`}>
 				{application.iconUrl ? (
+<<<<<<< HEAD
 					<div className={`w-16 h-16 cursor-pointer rounded-xl ${application.mlsSystem ? "bg-crmls-blue bg-opacity-20 border border-2 border-header" : "bg-white bg-opacity-10"} shadow-md flex justify-center items-center overflow-hidden relative app-card-${application.applicationCategory?.toLowerCase() ?? "none"}`} onClick={() => handleAppClick(application)}>
 						<img className="w-12 h-12" src={application.iconUrl} alt={application.name ?? "app-image"} />
 					</div>
 				) : (
 					<div className={`w-16 h-16 flex-shrink-0 mx-auto bg-header bg-opacity-50 text-inverse flex justify-center items-center cursor-pointer rounded-xl overflow-hidden relative app-card-${application.applicationCategory?.toLowerCase() ?? "none"}`} onClick={() => handleAppClick(application)}>
+=======
+					<div className={`relative w-16 h-16 cursor-pointer rounded-xl ${application.mlsSystem ? "bg-crmls-blue bg-opacity-20 border border-2 border-header" : "bg-white bg-opacity-10"} shadow-md flex justify-center items-center overflow-hidden relative app-card-${application.isNew ? "new" : application.applicationCategory?.toLowerCase() ?? "none"}`} onClick={() => handleAppClick(application)}>
+						<img className="w-12 h-12" src={application.iconUrl} alt={application.name ?? "app-image"} />
+					</div>
+				) : (
+					<div className={`relative w-16 h-16 flex-shrink-0 mx-auto bg-header bg-opacity-50 text-inverse flex justify-center items-center cursor-pointer rounded-xl overflow-hidden relative app-card-${application.isNew ? "new" : application.applicationCategory?.toLowerCase() ?? "none"}`} onClick={() => handleAppClick(application)}>
+>>>>>>> dev-1
 						<TemplateIcon className="h-6 w-6" aria-hidden="true" />
 					</div>
 				)}

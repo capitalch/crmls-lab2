@@ -79,8 +79,12 @@ module.exports = {
       backgroundColor: ['disabled'],
       opacity: ['disabled'],
       borderWidth: ['first'],
+<<<<<<< HEAD
       zIndex: ['hover', 'active'],
       display:['group-hover'],
+=======
+      zIndex: ['hover', 'active']
+>>>>>>> dev-1
     },
   },
   plugins: [

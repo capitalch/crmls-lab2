@@ -37,6 +37,12 @@ const Notifications = () => {
 	const readNotifications = useSelector(selectReadNotifications);
 	const archivedNotifications = useSelector(selectArchivedNotifications);
 	const [processing, setProcessing] = useState(0);
+<<<<<<< HEAD
+=======
+	const [selectedNotifications, setSelectedNotifications] = useState<any[]>([]);
+	const [bulkAction, setBulkAction] = useState<string>();
+	const [selectAll, setSelectAll] = useState<boolean>(false);
+>>>>>>> dev-1
 
 	useEffect(() => {
 		if (profile && profile.member?.id) {
@@ -161,7 +167,11 @@ const Notifications = () => {
 
 	const handleMarkAsUnread = () => {
 		if (activeNotification) {
+<<<<<<< HEAD
 			var index = readNotifications.indexOf(activeNotification.id);
+=======
+			const index = readNotifications.indexOf(activeNotification.id);
+>>>>>>> dev-1
 			if (index !== -1) {
 				const newReadNotifications = [...readNotifications].filter((notification) => notification !== activeNotification.id);
 				dispatch(
@@ -231,6 +241,113 @@ const Notifications = () => {
 		dispatch(showSlider());
 	};
 
+<<<<<<< HEAD
+=======
+	// Bulk Actions
+	useEffect(() => {
+		if (selectAll) {
+			setSelectedNotifications(allNotifications.map((notification) => notification.id));
+		} else {
+			setSelectedNotifications([]);
+		}
+	}, [selectAll]);
+
+	const handleSelectClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (e.target.checked) {
+			setSelectedNotifications([...selectedNotifications, e.target.value]);
+		} else {
+			setSelectedNotifications(selectedNotifications.filter((notification) => notification !== e.target.value));
+		}
+	};
+
+	const bulkActions = ["Mark as Read", "Mark as Unread", "Archive", "Unarchive"];
+	const changeBulkAction = (e: React.ChangeEvent<HTMLSelectElement>) => {
+		setBulkAction(e.target.value);
+	};
+
+	const executeBulkAction = () => {
+		// console.log(`Execute bulk action - ${bulkAction}`, selectedNotifications);
+		let newReadNotifications: any[], newArchivedNotifications: any[];
+		switch (bulkAction) {
+			case "Mark as Read":
+				const unread: string[] = [];
+				selectedNotifications.forEach((notification) => {
+					let selectedNotification = allNotifications.find((n) => n.id === notification);
+					if (selectedNotification && !readNotifications.find((notification: string) => notification === selectedNotification.id)) {
+						unread.push(selectedNotification.id);
+					}
+				});
+				newReadNotifications = [...readNotifications, ...unread];
+				// console.log("Mark as Read", newReadNotifications)
+				dispatch(
+					setUserPrefs({
+						key: "notifications.read",
+						value: newReadNotifications,
+					})
+				);
+				break;
+			case "Mark as Unread":
+				newReadNotifications = [...readNotifications];
+				selectedNotifications.forEach((notification) => {
+					let selectedNotification = allNotifications.find((n) => n.id === notification);
+					if (selectedNotification && readNotifications.find((notification: string) => notification === selectedNotification.id)) {
+						const index = readNotifications.indexOf(selectedNotification.id);
+						if (index !== -1) {
+							newReadNotifications = [...newReadNotifications].filter((notification) => notification !== selectedNotification.id);
+						}
+					}
+				});
+				// console.log("Mark as Unread", newReadNotifications)
+				dispatch(
+					setUserPrefs({
+						key: "notifications.read",
+						value: newReadNotifications,
+					})
+				);
+				break;
+			case "Archive":
+				const unarchived: string[] = [];
+				selectedNotifications.forEach((notification) => {
+					let selectedNotification = allNotifications.find((n) => n.id === notification);
+					if (selectedNotification && !archivedNotifications.find((notification: string) => notification === selectedNotification.id)) {
+						unarchived.push(selectedNotification.id);
+					}
+				});
+				newArchivedNotifications = [...archivedNotifications, ...unarchived];
+				// console.log("Mark as Archived", newArchivedNotifications)
+				dispatch(
+					setUserPrefs({
+						key: "notifications.archived",
+						value: newArchivedNotifications,
+					})
+				);
+				break;
+			case "Unarchive":
+				newArchivedNotifications = [...archivedNotifications];
+				selectedNotifications.forEach((notification) => {
+					let selectedNotification = allNotifications.find((n) => n.id === notification);
+					if (selectedNotification && archivedNotifications.find((notification: string) => notification === selectedNotification.id)) {
+						const index = archivedNotifications.indexOf(selectedNotification.id);
+						if (index !== -1) {
+							newArchivedNotifications = [...newArchivedNotifications].filter((notification) => notification !== selectedNotification.id);
+						}
+					}
+				});
+				// console.log("Mark as Unarchived", newArchivedNotifications)
+				dispatch(
+					setUserPrefs({
+						key: "notifications.archived",
+						value: newArchivedNotifications,
+					})
+				);
+				break;
+		}
+		setBulkAction("");
+		setSelectedNotifications([]);
+		setSelectAll(false);
+	};
+
+>>>>>>> dev-1
 	const getNotificationsList = () => {
 		return (
 			<div className="h-full w-full relative flex flex-col">
@@ -304,6 +421,7 @@ const Notifications = () => {
 									/>
 								</div>
 							)}
+<<<<<<< HEAD
 							<ul className="border-b border-default divide-y divide-default">
 								{notifications.map((notification) => (
 									<li key={notification.id} className={`relative bg-primary py-5 px-6 hover:bg-opacity-50 cursor-pointer ${activeNotification && notification.id === activeNotification.id && "bg-gray-50"}`} onClick={() => handleActiveNotification(notification, true, true)}>
@@ -326,6 +444,65 @@ const Notifications = () => {
 												{dayjs(notification.createdOn).format("MMM D, YYYY")}
 											</time>
 										</div>
+=======
+
+							<div className="mt-1 sm:mt-0 sm:col-span-4 py-2 px-4 border-b border-default shadow-sm">
+								{selectedNotifications.length > 0 && (
+									<>
+										<p className="font-medium pl-1 pb-1 text-sm">Bulk Actions:</p>
+										<div className="max-w-lg flex rounded-md">
+											<select id="notification-category" name="notification-category" className="input-registered-required" value={bulkAction || ""} onChange={changeBulkAction}>
+												<option value="">With Selected</option>
+												{bulkActions.map((action) => (
+													<option key={action} value={action}>
+														{action}
+													</option>
+												))}
+											</select>
+											<button type="button" className={`p-2 rounded-md text-sm font-medium hover:bg-opacity-80 ml-2 ${bulkAction ? "bg-header text-white" : "border border-default bg-secondary text-secondary"}`} onClick={executeBulkAction} disabled={!bulkAction}>
+												Confirm
+											</button>
+										</div>
+									</>
+								)}
+								<div className="max-w-lg flex items-center rounded-md pt-2">
+									<input type="checkbox" checked={selectAll} className="w-4 h-4 text-header bg-secondary border-divider rounded mr-2 z-20 cursor-pointer form-checkbox focus:ring-0 focus:outline-none focus-visible:outline-none" onChange={() => setSelectAll(!selectAll)} />
+									<span className="text-sm font-medium">Select All</span>
+								</div>
+							</div>
+							<ul className="border-b border-default divide-y divide-default">
+								{notifications.map((notification) => (
+									<li key={notification.id} className={`relative flex bg-primary p-4 hover:bg-opacity-50 cursor-pointer ${activeNotification && notification.id === activeNotification.id && "bg-gray-50"}`}>
+										<input
+											type="checkbox"
+											value={notification.id}
+											checked={selectedNotifications.includes(notification.id)}
+											className="w-4 h-4 text-header bg-secondary border-divider rounded mr-2 z-20 cursor-pointer form-checkbox focus:ring-0 focus:outline-none focus-visible:outline-none"
+											onChange={(e) => handleSelectClick(e)}
+										/>
+
+										{activeNotification && notification.id === activeNotification.id && (
+											<>
+												<div style={{ position: "absolute", right: 0, width: 0, height: 0, borderTop: "10px solid transparent", borderBottom: "10px solid transparent", borderRight: "10px solid #00549a" }}></div>
+												<div className="absolute inset-y-0 right-0 w-0.5 bg-header"></div>
+											</>
+										)}
+										<div className="min-w-0 flex-1" onClick={() => handleActiveNotification(notification, true, true)}>
+											<div className="block focus:outline-none">
+												<span className="absolute inset-0" aria-hidden="true" />
+												<div
+													className={`text-sm font-medium px-1 ${archivedNotifications.includes(notification.id) ? "text-red-500" : "text-header"} truncate ${
+														readNotifications.includes(notification.id) || archivedNotifications.includes(notification.id) ? "text-opacity-30" : "text-opacity-1"
+													}`}
+												>
+													{notification.subject}
+												</div>
+											</div>
+										</div>
+										<time dateTime={notification.createdOn} className="flex-shrink-0 whitespace-nowrap text-xs text-primary">
+											{dayjs(notification.createdOn).format("MMM D, YYYY")}
+										</time>
+>>>>>>> dev-1
 									</li>
 								))}
 							</ul>

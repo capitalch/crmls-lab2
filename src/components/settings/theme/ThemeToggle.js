@@ -2,6 +2,10 @@ import { useContext, Fragment } from "react";
 import { ThemeContext } from "./ThemeContext";
 import { Menu, Transition } from "@headlessui/react";
 import { CheckIcon, SunIcon } from "@heroicons/react/solid";
+<<<<<<< HEAD
+=======
+import { hideTooltips } from "./ThemeTooltip";
+>>>>>>> dev-1
 
 const Toggle = () => {
 	const { theme, setTheme } = useContext(ThemeContext);
@@ -16,7 +20,11 @@ const Toggle = () => {
 
 	return (
 		<Menu as="div" className="relative cursor-pointer">
+<<<<<<< HEAD
 			<div data-tip="Change Theme">
+=======
+			<div data-tip="Change Theme" onClick={() => hideTooltips()}>
+>>>>>>> dev-1
 				<Menu.Button className="text-secondary hover:text-primary flex text-sm rounded-full">
 					<span className="sr-only">Choose Theme</span>
 					<SunIcon className={`h-6 w-6`} aria-hidden="true" />

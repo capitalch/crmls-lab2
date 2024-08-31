@@ -4,6 +4,7 @@ import axios from "axios";
 import {formattedSettingEntity} from "../features/generalSettings/settingsHelper";
 import dayjs from "dayjs";
 import {accessControlType} from "../features/accessControls/accessControlsSlice";
+<<<<<<< HEAD
 import {getEnvironmentFromLocation} from "../util/helpers";
 
 // TODO: Need to set env var or otherwise figure out solid way to determine dev
@@ -68,6 +69,22 @@ export const profile_url = membershipProfile;
 export const kpi_url = kpis;
 export const compliance_url = compliance;
 export const crib_url = crib;
+=======
+
+export const base_url = process.env.REACT_APP_REGLISTINGS_URL;
+export const membership_url = process.env.REACT_APP_MEMBERSHIP_URL;
+export const member_portal_url = process.env.REACT_APP_MEMBER_PORTAL_URL;
+export const training_url = process.env.REACT_APP_TRAINING_URL;
+export const mace_url = process.env.REACT_APP_MACE_URL;
+export const notifications_url = process.env.REACT_APP_NOTIFICATIONS_URL;
+export const profile_url = process.env.REACT_APP_PROFILE_URL;
+export const kpi_url = process.env.REACT_APP_KPIS_URL;
+export const workflow_url = process.env.REACT_APP_WORKFLOW_URL;
+export const compliance_url = process.env.REACT_APP_COMPLIANCE_URL;
+export const crib_url = process.env.REACT_APP_CRIB_URL;
+export const media_url = process.env.REACT_APP_MEDIA_URL;
+
+>>>>>>> dev-1
 export type axiosConfig = {
     token: string,
     endpoint?: string,
@@ -206,6 +223,43 @@ export function memberTypeahead(input_text: string) {
     return axios.get(base_url + `cribdata/Members/ta/${input_text}`)
 }
 
+<<<<<<< HEAD
+=======
+export function ticketTypeahead(input_text: string) {
+    let payload = {
+        pageSize: 10,
+    } as any;
+
+    if(input_text?.length > 0){
+        payload.searchText =  input_text;
+    }
+    return axios.post(`${workflow_url}api/app/WorkItem/q`,payload)
+}
+
+export function getAllTickets(criteria: {activePage: number, pageSize: number, orderBy: any[]}) {
+    return axios.post( `${workflow_url}api/app/WorkItem/q`,{
+            pageId: criteria.activePage,
+            pageSize: criteria.pageSize,
+            orderBy: criteria.orderBy,
+    })
+}
+export function getTicket(id:string) {
+    return axios.get(`${workflow_url}api/app/FormDefinition/ByWorkItem/${id}/expanded/view`);
+}
+
+export function getAllArticles(criteria: {activePage: number, pageSize: number, orderBy: any[]}) {
+    return axios.post( `${mace_url}api/app/article/q`,{
+            pageId: criteria.activePage,
+            pageSize: criteria.pageSize,
+            orderBy: criteria.orderBy,
+    })
+}
+
+export function getArticle(id:string) {
+    return axios.get(`${mace_url}api/app/article/${id}/expanded`);
+}
+
+>>>>>>> dev-1
 export function getRegisteredListings() {
     return axios.post(base_url + "api/app/Registration/q", {
             pageId: 0,
@@ -222,6 +276,7 @@ export function getPaginatedRegisteredListings(payload: any) {
     });
 }
 
+<<<<<<< HEAD
 export function getPaginatedMembershipResource(resource:string, payload: any) {
     return axios.post(`${profile_url}api/app/${resource}/q`, {
         pageId: payload.pageId,
@@ -273,6 +328,8 @@ export async function fetchAllMembershipData({resource, criteria = [], orderBy =
     return results;
 }
 
+=======
+>>>>>>> dev-1
 export function getRegisteredListingById(id: string) {
     return axios.get(base_url + `api/app/Registration/${id}`)
 }
@@ -300,6 +357,7 @@ export function getTaxRecord(url: string, id: string){
 
 export function getAppSettings(loginId: string) {
     let url = `api/app/MemberAccessControls/${loginId}`;
+<<<<<<< HEAD
     // return axios.get(member_portal_url + url);
 
     return {
@@ -436,6 +494,9 @@ export function getAppSettings(loginId: string) {
         }
     }
 
+=======
+    return axios.get(member_portal_url + url);
+>>>>>>> dev-1
 }
 
 export function getOfficeAppSettings(officeId: string) {
@@ -688,3 +749,11 @@ export function getGenericContainers() {
 export function getKpis() {
     return axios.get(`${kpi_url}api/app/KpiDefinition/ExecuteAll`);
 }
+<<<<<<< HEAD
+=======
+
+export function fetchDataWithCriteria(baseUrl: string, resource: string, criteria: qPayload) {
+    return axios.post(`${baseUrl}api/app/${resource}/q`, criteria);
+}
+
+>>>>>>> dev-1

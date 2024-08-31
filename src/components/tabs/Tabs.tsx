@@ -5,7 +5,11 @@ import { selectPersistenceByPath, setSessionPref } from "../../features/user/per
 import { useHistory, useParams } from "react-router";
 import { convertUrlToString } from "../../util/helpers";
 
+<<<<<<< HEAD
 const Tabs = ({ section, activeTab, setActiveTab, persist, children, rootPath }: { section?: string; activeTab?: string | undefined; setActiveTab?: (tab: string) => void; persist?: boolean; children: any; rootPath?: string }) => {
+=======
+const Tabs = ({ section, activeTab, setActiveTab, persist, children, rootPath, badges }: { section?: string; activeTab?: string | undefined; setActiveTab?: (tab: string) => void; persist?: boolean; children: any; rootPath?: string; badges?: any[] }) => {
+>>>>>>> dev-1
 	const dispatch = useAppDispatch();
 	const usePersistence = persist ?? true;
 	const tabPersistenceKey = section && usePersistence ? [section, "tabs", "active"].join(".") : "";
@@ -70,7 +74,15 @@ const Tabs = ({ section, activeTab, setActiveTab, persist, children, rootPath }:
 		<div className="crmls-tabs">
 			<ol className="crmls-tab-list">
 				{children.map((child: any) => {
+<<<<<<< HEAD
 					return <Tab activeTab={currentTab} key={child.props["data-label"]} label={child.props["data-label"]} onClick={onClickTabItem} labelClassName={child.props["data-label-style"]}/>;
+=======
+					let tabBadge = null;
+					if (badges && badges.length > 0) {
+						tabBadge = badges.find(badge => badge.tab === child.props["data-label"]);
+					}
+					return <Tab activeTab={currentTab} key={child.props["data-label"]} label={child.props["data-label"]} onClick={onClickTabItem} badge={tabBadge ?? tabBadge?.badge} />;
+>>>>>>> dev-1
 				})}
 			</ol>
 			<div className="crmls-tab-content">
@@ -87,4 +99,7 @@ const Tabs = ({ section, activeTab, setActiveTab, persist, children, rootPath }:
 };
 
 export default Tabs;
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev-1

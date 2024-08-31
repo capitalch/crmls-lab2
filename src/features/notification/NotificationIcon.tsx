@@ -20,7 +20,11 @@ const NotificationIcon = ({ size }: { size: number }) => {
 	}, [profile]);
 
 	useEffect(() => {
+<<<<<<< HEAD
 		if (readNotifications && readNotifications.length) {
+=======
+		if (allNotifications.length > 0 && readNotifications && readNotifications.length) {
+>>>>>>> dev-1
 			const hasUnread = allNotifications.filter(({ id }) => !readNotifications.includes(id));
 			setUnreadNotificationsCount(hasUnread.length);
 		} else {

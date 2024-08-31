@@ -119,7 +119,11 @@ const NextButton = ({ handleClick, currentStep, steps, isValid, validateForm, se
 				<button
 					type="submit"
 					className="inline-flex justify-center items-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none disabled:bg-tertiary disabled:pointer-events-none disabled:cursor-not-allowed"
+<<<<<<< HEAD
 					disabled={!isValid}
+=======
+					disabled={!isValid || isSubmitting}
+>>>>>>> dev-1
 				>
 					<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 pr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />

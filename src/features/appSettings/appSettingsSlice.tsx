@@ -17,7 +17,10 @@ export const fetchAllAppSettings = createAsyncThunk(
     'appSettings/fetchAllAppSettings',
     async (loginId: string, thunkAPI) => {
         const response = await getAppSettings(loginId);
+<<<<<<< HEAD
         console.log(response)
+=======
+>>>>>>> dev-1
         return response.data;
     }
 )

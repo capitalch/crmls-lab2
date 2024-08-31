@@ -1,6 +1,10 @@
 import ChatBubbleIcon from "../widgets/icons/ChatBubbleIcon";
 import { useSelector } from "react-redux";
 import { userProfile } from "../../features/user/selectors";
+<<<<<<< HEAD
+=======
+import { SupportTabs } from "../widgets/SupportPanel";
+>>>>>>> dev-1
 
 const Footer = () => {
 	const profile = useSelector(userProfile);
@@ -12,6 +16,10 @@ const Footer = () => {
 		youtube: "",
 		linkedin: "",
 		support: "",
+<<<<<<< HEAD
+=======
+		phone: "",
+>>>>>>> dev-1
 	};
 
 	// Switch footer text and links based on logged in user's originatingSystemID
@@ -25,12 +33,20 @@ const Footer = () => {
 			footerData.youtube = "https://www.youtube.com/user/CRMLSTV";
 			footerData.linkedin = "https://www.linkedin.com/company/crmls";
 			footerData.support = "https://go.crmls.org/support/";
+<<<<<<< HEAD
+=======
+			footerData.phone = "(800) 925-1525";
+>>>>>>> dev-1
 			break;
 		case "SWL":
 			footerData.facebook = "https://www.facebook.com/groups/491112628264654";
 			footerData.youtube = "https://www.youtube.com/channel/UCVk3zYccjXb8MXLhlDLTlfg";
 			footerData.linkedin = "https://www.linkedin.com/company/greater-southern-mls";
 			footerData.support = "https://greatersouthernmls.com/support/";
+<<<<<<< HEAD
+=======
+			footerData.phone = "(877) 760-0173";
+>>>>>>> dev-1
 			break;
 	}
 
@@ -65,8 +81,18 @@ const Footer = () => {
 			name: "Twitter",
 			href: footerData.twitter,
 			icon: (props: any) => (
+<<<<<<< HEAD
 				<svg fill="currentColor" viewBox="0 0 24 24" {...props}>
 					<path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+=======
+				<svg viewBox="0 0 1200 1227" fill="currentColor" {...props}>
+					<path
+						fillRule="evenodd"
+						d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"
+						fill="currentColor"
+						clipRule="evenodd"
+					/>
+>>>>>>> dev-1
 				</svg>
 			),
 		},
@@ -104,7 +130,12 @@ const Footer = () => {
 						))}
 				</div>
 			</div>
+<<<<<<< HEAD
 			<ChatBubbleIcon supportLink={footerData.support} />
+=======
+			{/* layout = tabs, flyout, or empty */}
+			<SupportTabs layout="flyout" supportPhone={footerData.phone} />
+>>>>>>> dev-1
 		</footer>
 	);
 };

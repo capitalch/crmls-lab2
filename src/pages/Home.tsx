@@ -41,9 +41,16 @@ const Home = () => {
 	useEffect(() => {
 		if (allAds.length > 0) {
 			const adsResponse = allAds[0];
+<<<<<<< HEAD
 			const dashboardAd = adsResponse.impressions.find((impression: any) => impression.tagName === "dashboard-billboard");
 
 			let tmpStaticSections: any[] = (adsResponse?.isEnabled && dashboardAd?.isEnabled) ? BillboardSection(dashboardAd.isScript, dashboardAd.template) : [];
+=======
+			const billboardAd = adsResponse.impressions.find((impression: any) => impression.tagName === "dashboard-billboard");
+			const spotlightAd = adsResponse.impressions.find((impression: any) => impression.tagName === "spotlight-ad");
+
+			let tmpStaticSections: any[] = adsResponse?.isEnabled && (billboardAd?.isEnabled || spotlightAd?.isEnabled) ? BillboardSection({billboardAd, spotlightAd}) : [];
+>>>>>>> dev-1
 			tmpStaticSections = [
 				...tmpStaticSections,
 				...[
@@ -108,7 +115,11 @@ const Home = () => {
 	}
 
 	return (
+<<<<<<< HEAD
 		<ContentContainer actions={null} cssClass="crmls-dashboard pb-12" sideBarOptions={<DashboardOptions />}>
+=======
+		<ContentContainer actions={null} cssClass="crmls-dashboard pb-12 mt-10 sm:mt-0" sideBarOptions={<DashboardOptions />}>
+>>>>>>> dev-1
 			{isLoading ? (
 				<DashboardLoader />
 			) : (

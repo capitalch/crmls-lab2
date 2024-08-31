@@ -123,6 +123,10 @@ export type userPayload = {
     aor?: aorPayload,
     token: string,
     memberType: memberType,
+<<<<<<< HEAD
+=======
+    requiredPasswordUpdate?: boolean | undefined,
+>>>>>>> dev-1
 }
 
 export type memberPayload = {
