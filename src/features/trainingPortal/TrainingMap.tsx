@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import { Loader } from '@googlemaps/js-api-loader';
 
 const loader = new Loader({
-    apiKey: "AIzaSyBEZ4vELsReWxT8FslfiTWvO6xnv7nE3Z4",
+    apiKey: "",
     version: "weekly",
     libraries: [],
 });
